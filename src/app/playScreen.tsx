@@ -1,8 +1,10 @@
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+
+import { midnightTeal } from '../constants/Colors';
 
 const playScreen = () => {
     return (
-        <View>
+        <View style={styles.background}>
             <Text>Test2</Text>
         </View>
     );
@@ -11,3 +13,14 @@ const playScreen = () => {
 
 
 export default playScreen;
+
+const styles = StyleSheet.create({
+  
+    background: {
+      height: "100%",
+      backgroundColor: midnightTeal,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+  });
+  
