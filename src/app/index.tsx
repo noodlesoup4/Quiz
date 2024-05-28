@@ -4,6 +4,9 @@ import { Link, router } from 'expo-router';
 
 import { midnightTeal } from '../constants/Colors';
 
+import Logo from '../assets/svgs/Quiz-App-Logo.svg';
+import { blue } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+
 
 
 const MainMenu = () => {
@@ -14,9 +17,9 @@ const MainMenu = () => {
       <Link href="/play/playScreen">Hier Klicken</Link>
       <TouchableOpacity
         onPress={() => router.push("/play/playScreen")}
-        style={styles.reactLogo}
+        style={styles.container}
       >
-        <Text style={styles.reactLogo}>Klicken</Text>
+        <Logo width={100} height={100} />
       </TouchableOpacity>
     </View>
   );
@@ -32,15 +35,18 @@ export default function homeScreen() {
 
 const styles = StyleSheet.create({
   
- background:{
-  flex: 1,
-  backgroundColor: midnightTeal
- },
- reactLogo: {
-  height: 178,
-  width: 290,
-  bottom: 0,
-  left: 0,
-  position: 'absolute',
-},
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  background: {
+    backgroundColor: midnightTeal,
+    padding: 20,
+    borderRadius: 10,
+  },
+  logoContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
