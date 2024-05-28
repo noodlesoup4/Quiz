@@ -1,21 +1,30 @@
-import { Text, Image, StyleSheet, Platform, View, Button } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
 import { Link, router } from 'expo-router';
 
-export default function HomeScreen() {
+
+const MainMenu = () => {
+
   return (
-    <View>
+    <View style={styles.stepContainer}>
       <Text>Test</Text>
       <Link href="/play/playScreen">Hier Klicken</Link>
-      <Button onPress={() => router.push("/play/playScreen")}
-        title='play2'>
-      </Button>
+      <TouchableOpacity
+        onPress={() => router.push("/play/playScreen")}
+        style={styles.reactLogo}
+      >
+        <Text style={styles.reactLogo}>Klicken</Text>
+      </TouchableOpacity>
     </View>
   );
+}
+
+export default function homeScreen() {
+  return (
+    <View>
+      <MainMenu></MainMenu>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
