@@ -1,11 +1,12 @@
-import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import { Link, router } from 'expo-router';
+import { router } from 'expo-router';
 
 import { midnightTeal } from '../constants/Colors';
 
 import Logo from '../assets/svgs/Quiz-App-Logo.svg';
-import { blue } from 'react-native-reanimated/lib/typescript/reanimated2/Colors';
+
+import PlayButton from '../assets/svgs/Quiz-App-Play-Button.svg';
 
 
 
@@ -13,13 +14,11 @@ const MainMenu = () => {
 
   return (
     <View style={styles.background}>
-      <Text>Test</Text>
-      <Link href="/play/playScreen">Hier Klicken</Link>
+      <Logo style={styles.logoContainer}/>
       <TouchableOpacity
-        onPress={() => router.push("/play/playScreen")}
-        style={styles.container}
-      >
-        <Logo width={100} height={100} />
+        onPress={() => router.push("./playScreen")}
+        style={styles.playContainer}>
+        <PlayButton/>
       </TouchableOpacity>
     </View>
   );
@@ -35,18 +34,21 @@ export default function homeScreen() {
 
 const styles = StyleSheet.create({
   
-  container: {
-    flex: 1,
+  background: {
+    height: "100%",
+    backgroundColor: midnightTeal,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  background: {
-    backgroundColor: midnightTeal,
-    padding: 20,
-    borderRadius: 10,
   },
   logoContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: "-10%",
+    width: 100,
+    height: 100,
+    
+  },
+  playContainer: {
+    marginTop: "40%",
+    width: 100,
+    height: 100,
   },
 });
