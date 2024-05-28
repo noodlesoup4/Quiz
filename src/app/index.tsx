@@ -1,4 +1,4 @@
-import { Text, Image, StyleSheet, View, Button } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import { Link, router } from 'expo-router';
 
@@ -6,25 +6,41 @@ import { midnightTeal } from '../constants/Colors';
 
 
 
-export default function HomeScreen() {
+const MainMenu = () => {
+
   return (
     <View style={styles.background}>
       <Text>Test</Text>
-      <Image></Image>
-      <Link href="/playScreen">Hier Klicken</Link>
-      <Button onPress={() => router.push("/playScreen")}
-        title='play2'>
-      </Button>
+      <Link href="/play/playScreen">Hier Klicken</Link>
+      <TouchableOpacity
+        onPress={() => router.push("/play/playScreen")}
+        style={styles.reactLogo}
+      >
+        <Text style={styles.reactLogo}>Klicken</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
-  
+export default function homeScreen() {
+  return (
+    <View>
+      <MainMenu></MainMenu>
+    </View>
+  )
+}
 
 const styles = StyleSheet.create({
   
  background:{
   flex: 1,
   backgroundColor: midnightTeal
- }
+ },
+ reactLogo: {
+  height: 178,
+  width: 290,
+  bottom: 0,
+  left: 0,
+  position: 'absolute',
+},
 });
