@@ -1,13 +1,12 @@
 import { StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import { router } from 'expo-router';
+
 
 import { midnightTeal } from '../constants/Colors';
 
 import Logo from '../assets/svgs/Quiz-App-Logo.svg';
 
-import PlayButton from '../assets/svgs/Quiz-App-Play-Button.svg';
-
+import  PlayButtonComponent  from '../components/PlayButton';
 
 
 const MainMenu = () => {
@@ -15,22 +14,12 @@ const MainMenu = () => {
   return (
     <View style={styles.background}>
       <Logo style={styles.logoContainer}/>
-      <TouchableOpacity
-        onPress={() => router.push("./playScreen")}
-        style={styles.playContainer}>
-        <PlayButton/>
-      </TouchableOpacity>
+     <PlayButtonComponent></PlayButtonComponent>
     </View>
   );
 }
 
-export default function homeScreen() {
-  return (
-    <View>
-      <MainMenu></MainMenu>
-    </View>
-  )
-}
+export default MainMenu;
 
 const styles = StyleSheet.create({
   
@@ -46,9 +35,5 @@ const styles = StyleSheet.create({
     height: 100,
     
   },
-  playContainer: {
-    marginTop: "40%",
-    width: 100,
-    height: 100,
-  },
+  
 });
