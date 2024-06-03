@@ -1,13 +1,8 @@
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import React from 'react';
-import { LinearGradient } from 'expo-linear-gradient';
-import { TouchableOpacity, Alert } from 'react-native';
+import { Alert } from 'react-native';
 import QuestionComponent from '../components/questionScreen/QuestionComponent';
 import AnswerButton from '../components/questionScreen/AnswerButton';
-import { StatusBar } from 'react-native';
-import { router } from 'expo-router';
-import { useNavigation } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
 import CircularProgress,{ ProgressRef } from 'react-native-circular-progress-indicator';
 import { useRef } from 'react';
 import ReadyButton from '../components/questionScreen/ReadyButton';
