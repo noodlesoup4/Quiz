@@ -22,11 +22,12 @@ const styles = StyleSheet.create({
       borderRadius: 25,
       justifyContent: "center",
       alignItems: "center",
-      shadowColor: '#000000', // Farbe des Schattens
-      shadowOffset: { width: 0, height: 20 }, // Verschiebung des Schattens (x, y)
-      shadowOpacity: 0.15, // Deckkraft des Schattens (0-1)
-      shadowRadius: 50, // Radius des Schattens
+      shadowColor: '#000000', 
+      shadowOffset: { width: 0, height: 20 }, 
+      shadowOpacity: 0.15, 
+      shadowRadius: 50,
       elevation: 5,
+      marginBottom: 20,
     },
     text: {
       fontSize: 22,

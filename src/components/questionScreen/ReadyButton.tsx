@@ -1,33 +1,31 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { ViewStyle } from 'react-native';
-
 
 interface CustomComponentProps {
     onPress: () => void;
-    answer: string;
   }
 
-const AnswerButton: React.FC<CustomComponentProps> = ({answer, onPress}) => {
-
+const ReadyButton: React.FC<CustomComponentProps> = ({onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.text}>{answer}</Text>
+        <Text style={styles.text}>Weiter</Text>
     </TouchableOpacity>
   )
 }
 
-export default AnswerButton
+export default ReadyButton
 
 const styles = StyleSheet.create({
     button: {
         width: "80%",
-        backgroundColor: "white",
+        backgroundColor: "#135D66",
         marginVertical: 10,
         padding: 15,
         borderRadius: 20,
+        alignItems: "center"
     },
     text: {
       fontSize: 15,
+      color: "white",
     }
 })
