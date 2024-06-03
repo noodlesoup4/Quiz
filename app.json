@@ -13,7 +13,10 @@
       "backgroundColor": "#135D66"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "UIViewControllerBasedStatusBarAppearance": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +30,33 @@
       "favicon": "./src/assets/images/icon.png"
     },
     "plugins": [
-      "expo-router"
+      [
+        "expo-font",
+        {
+          "fonts": [
+            {
+              "asset": "./assets/fonts/Lato-Black.ttf",
+              "postscriptName": "Lato-Black"
+            },
+            {
+              "asset": "./assets/fonts/Lato-Bold.ttf",
+              "postscriptName": "Lato-Bold"
+            },
+            {
+              "asset": "./assets/fonts/Lato-Light.ttf",
+              "postscriptName": "Lato-Light"
+            },
+            {
+              "asset": "./assets/fonts/Lato-Regular.ttf",
+              "postscriptName": "Lato-Regular"
+            },
+            {
+              "asset": "./assets/fonts/Lato-Thin.ttf",
+              "postscriptName": "Lato-Thin"
+            }
+          ]
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

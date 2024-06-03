@@ -7,7 +7,7 @@ import PlayButton from '../assets/svgs/Quiz-App-Play-Button.svg';
 const PlayButtonComponent = () => {
   return (
     <TouchableOpacity
-      onPress={() => router.push("./playScreen")}
+      onPress={() => router.push("./QuestionScreen")}
       style={styles.playContainer}>
       <PlayButton/>
     </TouchableOpacity>
