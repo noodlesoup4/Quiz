@@ -1,19 +1,20 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import React from 'react';
 
 interface CustomComponentProps {
     onPress: () => void;
-  }
-
-const ReadyButton: React.FC<CustomComponentProps> = ({onPress}) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.text}>Weiter</Text>
-    </TouchableOpacity>
-  )
+    style?: any;  // Adding optional style prop
 }
 
-export default ReadyButton
+const ReadyButton: React.FC<CustomComponentProps> = ({ onPress, style }) => {
+    return (
+        <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+            <Text style={styles.text}>Weiter</Text>
+        </TouchableOpacity>
+    );
+};
+
+export default ReadyButton;
 
 const styles = StyleSheet.create({
     button: {
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     text: {
-      fontSize: 15,
-      color: "white",
+        fontSize: 15,
+        color: "white",
     }
-})
+});

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import { Alert } from 'react-native';
 import QuestionComponent from '../components/questionScreen/QuestionComponent';
 import AnswerButton from '../components/questionScreen/AnswerButton';
@@ -9,6 +9,7 @@ import ReadyButton from '../components/questionScreen/ReadyButton';
 
 
 const QuestionScreen = () => {
+  const [questionNumber, setQuestionNumber] = useState(0);
   const progressRef = useRef<ProgressRef>(null);
 
   const handleAnswerPress = () => {
@@ -21,7 +22,7 @@ const QuestionScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>0/7</Text>
+      <Text style={styles.text}>{questionNumber}/10</Text>
       <View style={styles.progressContainer}>
         <CircularProgress
           ref={progressRef}
@@ -72,10 +73,12 @@ const styles = StyleSheet.create({
   },
   answers: {
     width: "100%",
-    flex: 0.2,
     alignItems: "center",
   },
   readyButton: {
+    marginTop: 50,
+    width: "100%",
+    alignItems: "center",
   }
 });
 

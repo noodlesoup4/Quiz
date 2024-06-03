@@ -1,23 +1,21 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { ViewStyle } from 'react-native';
-
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 
 interface CustomComponentProps {
     onPress: () => void;
     answer: string;
-  }
-
-const AnswerButton: React.FC<CustomComponentProps> = ({answer, onPress}) => {
-
-  return (
-    <TouchableOpacity onPress={onPress} style={styles.button}>
-        <Text style={styles.text}>{answer}</Text>
-    </TouchableOpacity>
-  )
+    style?: any;  // Adding optional style prop
 }
 
-export default AnswerButton
+const AnswerButton: React.FC<CustomComponentProps> = ({ answer, onPress, style }) => {
+    return (
+        <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+            <Text style={styles.text}>{answer}</Text>
+        </TouchableOpacity>
+    );
+};
+
+export default AnswerButton;
 
 const styles = StyleSheet.create({
     button: {
@@ -28,6 +26,6 @@ const styles = StyleSheet.create({
         borderRadius: 20,
     },
     text: {
-      fontSize: 15,
+        fontSize: 15,
     }
-})
+});
