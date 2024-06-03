@@ -59,23 +59,29 @@ const QuestionScreen = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#EFF0F3",
-    flex: 1,
-    justifyContent: 'flex-start',
     alignItems: "center",
+    height: '100%',
+    width: '100%',
   },
   text: {
   },
   progressContainer: {
-    marginBottom: -25,
-    marginTop: 40,
+    position: 'absolute',
+    top: 40,
+    width: '100%',
     zIndex: 2,
   },
   answers: {
+    position: 'absolute',
+    top: '33%',
     width: "100%",
-    flex: 0.2,
     alignItems: "center",
   },
   readyButton: {
+    position: 'absolute',
+    bottom: '20%',
+    width: '100%',
+    alignItems: 'center',
   }
 });
 
