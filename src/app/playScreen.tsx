@@ -9,12 +9,13 @@ import RectangleComponent from '../components/Rectangle';
 const playScreen = () => {
     return (
         <View style={styles.background}>
-            <RectangleComponent>
+            <RectangleComponent onPress = {() => router.push("./category")}>
                 <Text style = {styles.text}>Normal</Text>
                 
             </RectangleComponent>
 
             <RectangleComponent>
+                
                 <Text style = {styles.text}>Survival</Text>
                 
             </RectangleComponent>
