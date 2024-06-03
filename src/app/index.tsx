@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
 
 
 
@@ -7,19 +7,27 @@ import { midnightTeal } from '../constants/Colors';
 import Logo from '../assets/svgs/Quiz-App-Logo.svg';
 
 import  PlayButtonComponent  from '../components/PlayButton';
+import { registerRootComponent } from 'expo';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
-const MainMenu = () => {
+
+const HomeScreen = () => {
 
   return (
-    <View style={styles.background}>
+    <SafeAreaView>
+      <LinearGradient 
+    style={styles.background}
+    colors={['#135D66', '#003C43']}>
       <Logo style={styles.logoContainer}/>
      <PlayButtonComponent></PlayButtonComponent>
-    </View>
+    </LinearGradient>
+    </SafeAreaView>
+    
   );
 }
 
-export default MainMenu;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   
