@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
+        fontFamily: 'Lato-Bold',
     }
 });

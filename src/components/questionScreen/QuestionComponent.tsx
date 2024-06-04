@@ -34,5 +34,6 @@ const styles = StyleSheet.create({
     text: {
         fontSize: 22,
         margin: 20,
+        fontFamily: 'Lato-Bold',
     }
 });

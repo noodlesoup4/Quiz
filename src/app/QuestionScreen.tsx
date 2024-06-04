@@ -6,8 +6,7 @@ import ReadyButton from '../components/questionScreen/ReadyButton';
 import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator';
 import { useRef } from 'react';
 import questions from '../assets/data/questions.json';
-
-
+import { useFonts } from 'expo-font';
 
 const QuestionScreen = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -15,6 +14,13 @@ const QuestionScreen = () => {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [timeUp, setTimeUp] = useState(false);
   const progressRef = useRef<ProgressRef>(null);
+
+  const [fontsLoaded] = useFonts({
+    'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+  });
 
   const handleAnswerPress = (answer: string) => {
     setSelectedAnswer(answer);
@@ -45,6 +51,10 @@ const QuestionScreen = () => {
       Alert.alert('Quiz beendet', `Ihr Punktestand: ${score}/${questions.length}`);
     }
   }, [currentQuestionIndex]);
+
+  if (!fontsLoaded) {
+    return <View />;
+  }
 
   if (currentQuestionIndex >= questions.length) {
     return (
