@@ -2,12 +2,11 @@ import { StyleSheet, View, TouchableOpacity, SafeAreaView, StatusBar } from 'rea
 
 
 
-import { midnightTeal } from '../constants/Colors';
+import { midnightTeal } from '../model/Colors';
 
 import Logo from '../assets/svgs/Quiz-App-Logo.svg';
 
 import  PlayButtonComponent  from '../components/PlayButton';
-import { registerRootComponent } from 'expo';
 import { LinearGradient } from 'expo-linear-gradient';
 
 

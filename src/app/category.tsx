@@ -1,5 +1,5 @@
 import { View,StyleSheet } from "react-native";
-import { lightMint,white,midnightTeal } from "../constants/Colors";
+import { lightMint,white,midnightTeal } from "../model/Colors";
 
 
 

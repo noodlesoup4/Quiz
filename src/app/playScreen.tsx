@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-import { midnightTeal } from '../constants/Colors';
+import { midnightTeal } from '../model/Colors';
 import { router } from "expo-router";
 import RectangleComponent from '../components/Rectangle';
 

@@ -1,6 +1,6 @@
 
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from "react-native";
-import { lightMint } from "../constants/Colors";
+import { lightMint } from "../model/Colors";
 import { ReactNode } from "react";
 
 
