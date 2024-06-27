@@ -1,27 +1,26 @@
-const express = require('express');
-const mysql = require('mysql');
-const cors = require('cors');
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+import * as SQLite from 'expo-sqlite';
 
-const db = mysql.createConnection({
-    host: 'localhost',
-    user: 'your_username',
-    password: 'your_password',
-    database: 'your_database_name'
-});
+const sqlPath = './assets/data/QuizDB.sql';
+const dbPath = './assets/data/QuizDB.db';
 
-app.get('/questions', (req, res) => {
-    const query = "SELECT * FROM quiz_questions";
-    db.query(query, (err, result) => {
-        if (err) throw err;
-        res.json(result);
+function checkForDatabase() {
+    const db = SQLite.openDatabase(dbPath);
+    db.transaction((tx) => {
+        tx.executeSql('DROP TABLE IF EXISTS Questions;');
+        tx.executeSql(sqlPath);
     });
-});
+    }
 
-const port = 3000;
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
-});
+function selectTenQuestionsFromCategory(category) {
+  const db = SQLite.openDatabase(dbPath);
+  const query = `SELECT * FROM Questions WHERE category = '${category}' ORDER BY RANDOM() LIMIT 10;`;
+  return new Promise((resolve, reject) => {
+    checkForDatabase();
+    db.transaction((tx) => {
+      tx.executeSql(query, [], (_, { rows }) => {
+        resolve(rows._array);
+      });
+    });
+  });
+}
