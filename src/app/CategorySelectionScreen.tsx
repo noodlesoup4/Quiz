@@ -1,35 +1,51 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { FontAwesome5, FontAwesome, MaterialIcons } from '@expo/vector-icons';
-import { router } from 'expo-router';
+import { FontAwesome5, FontAwesome, MaterialIcons, FontAwesome6 } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import {  white } from '../model/Colors'; // Assuming 'constants/Colors' holds color definitions
 
 const categories = [
   { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" /> },
   { name: 'Physik', icon: <FontAwesome name="calculator" size={24} color="teal" /> },
-  { name: 'Musik', icon: <FontAwesome name="music" size={24} color="teal" /> },
+  { name: 'Politik', icon: <FontAwesome name="university" size={24} color="teal" />},
   { name: 'Geschichte', icon: <FontAwesome name="book" size={24} color="teal" /> },
   { name: 'Geographie', icon: <FontAwesome5 name="globe" size={24} color="teal" /> },
-  { name: 'Tiere', icon: <FontAwesome5 name="paw" size={24} color="teal" /> },
-  { name: 'Erotik', icon: <MaterialIcons name="18-up-rating" size={24} color="teal" /> },
+  { name: 'Natur', icon: <FontAwesome5 name="paw" size={24} color="teal" /> },
+  { name: 'Religion', icon: <FontAwesome6 name="book-bible" size={24} color="teal" /> },
   { name: 'Zufällig', icon: <FontAwesome name="question" size={24} color="teal" /> },
 ];
 
 export default function CategorySelectionScreen() {
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]); // Array to store selected indices
   const [canContinue, setCanContinue] = useState(false); // State for continue button
+  const [randomSelected, setRandomSelected] = useState(false);
+  const router = useRouter();
+
 
   const handlePress = (index: number) => {
-    const newSelectedIndexes = [...selectedIndexes];
-    if (selectedIndexes.includes(index)) {
-      const removedIndex = newSelectedIndexes.indexOf(index);
-      newSelectedIndexes.splice(removedIndex, 1);
+    if (index === 7) { // "Zufällig" is at index 7
+      if (randomSelected) {
+        setRandomSelected(false);
+        setSelectedIndexes([]);
+        setCanContinue(false);
+      } else {
+        setRandomSelected(true);
+        setSelectedIndexes([index]);
+        setCanContinue(true);
+      }
     } else {
-      newSelectedIndexes.push(index);
+      if (randomSelected) return; // Disable other buttons if "Zufällig" is selected
+      const newSelectedIndexes = [...selectedIndexes];
+      if (selectedIndexes.includes(index)) {
+        const removedIndex = newSelectedIndexes.indexOf(index);
+        newSelectedIndexes.splice(removedIndex, 1);
+      } else {
+        newSelectedIndexes.push(index);
+      }
+      setSelectedIndexes(newSelectedIndexes);
+      setCanContinue(newSelectedIndexes.length > 0); // Update continue button state
     }
-    setSelectedIndexes(newSelectedIndexes);
-    setCanContinue(newSelectedIndexes.length > 0); // Update continue button state
   };
 
   return (
@@ -48,6 +64,7 @@ export default function CategorySelectionScreen() {
             style={[
               styles.button,
               selectedIndexes.includes(index) && styles.selectedButton,
+              randomSelected && index !== 7 && {opacity: 0.4} // Set opacity for other buttons if "Zufällig" is selected
             ]}
             onPress={() => handlePress(index)}
           >
@@ -61,8 +78,19 @@ export default function CategorySelectionScreen() {
         style={[styles.continueButton, { opacity: canContinue ? 1 : 0.40 }]}
         disabled={!canContinue} // Disable button if no category selected
         onPress={() => {
-          router.push('QuestionScreen');
-        }}
+          let selectedCategories = selectedIndexes.map(index => categories[index].name.toLowerCase()); 
+            if (randomSelected) {
+              // Include all categories except "Zufällig"
+                selectedCategories = categories
+                .filter((_, index) => index !== 7)
+                .map(category => category.name.toLowerCase());
+            }
+            router.push({
+              pathname: 'QuestionScreen',
+              params : {selectedCategories : JSON.stringify(selectedCategories)}
+            })
+          } 
+        }
       >
         <Text style={styles.continueButtonText}>Weiter</Text>
       </TouchableOpacity>

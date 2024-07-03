@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Was ist die chemische Formel für Wasser?",
+      "answers": ["H2O", "CO2", "O2", "H2"],
+      "correctAnswer": "H2O"
+    },
+    {
+      "question": "Welches Element hat das chemische Symbol 'O'?",
+      "answers": ["Gold", "Silber", "Sauerstoff", "Zink"],
+      "correctAnswer": "Sauerstoff"
+    },
+    {
+      "question": "Wie viele Protonen hat ein Kohlenstoffatom?",
+      "answers": ["6", "8", "12", "14"],
+      "correctAnswer": "6"
+    },
+    {
+      "question": "Welche Art von Bindung liegt zwischen Wasserstoffatomen in einem Wassermolekül vor?",
+      "answers": ["Ionenbindung", "kovalente Bindung", "Metallbindung", "Wasserstoffbrücke"],
+      "correctAnswer": "kovalente Bindung"
+    },
+    {
+      "question": "Was ist der pH-Wert von reinem Wasser?",
+      "answers": ["0", "7", "14", "3"],
+      "correctAnswer": "7"
+    },
+    {
+      "question": "Was beschreibt das Gesetz von Avogadro?",
+      "answers": ["Die Erhaltung der Masse", "Das Verhältnis von Volumen und Temperatur", "Die Anzahl der Teilchen in einem Mol", "Das Verhalten von Gasen"],
+      "correctAnswer": "Die Anzahl der Teilchen in einem Mol"
+    },
+    {
+      "question": "Was ist der Hauptbestandteil der Luft?",
+      "answers": ["Sauerstoff", "Kohlenstoffdioxid", "Stickstoff", "Argon"],
+      "correctAnswer": "Stickstoff"
+    },
+    {
+      "question": "Wie lautet die chemische Formel von Natriumchlorid?",
+      "answers": ["NaCl", "NaHCO3", "KCl", "CaCO3"],
+      "correctAnswer": "NaCl"
+    },
+    {
+      "question": "Was ist eine exotherme Reaktion?",
+      "answers": ["Eine Reaktion, die Energie aufnimmt", "Eine Reaktion, die Energie abgibt", "Eine Reaktion, die bei niedrigen Temperaturen abläuft", "Eine Reaktion, die bei hohen Temperaturen abläuft"],
+      "correctAnswer": "Eine Reaktion, die Energie abgibt"
+    },
+    {
+      "question": "Welche der folgenden Verbindungen ist organisch?",
+      "answers": ["H2O", "NaCl", "CH4", "O2"],
+      "correctAnswer": "CH4"
+    },
+    {
+      "question": "Welches Teilchen hat eine negative Ladung?",
+      "answers": ["Proton", "Neutron", "Elektron", "Photon"],
+      "correctAnswer": "Elektron"
+    },
+    {
+      "question": "Welches Metall ist flüssig bei Raumtemperatur?",
+      "answers": ["Eisen", "Quecksilber", "Aluminium", "Kupfer"],
+      "correctAnswer": "Quecksilber"
+    },
+    {
+      "question": "Wie nennt man die Reaktion, bei der ein Stoff mit Sauerstoff reagiert?",
+      "answers": ["Hydration", "Reduktion", "Oxidation", "Neutralisation"],
+      "correctAnswer": "Oxidation"
+    },
+    {
+      "question": "Was entsteht, wenn man Säure und Base mischt?",
+      "answers": ["Salz und Wasser", "Nur Wasser", "Säure", "Base"],
+      "correctAnswer": "Salz und Wasser"
+    },
+    {
+      "question": "Welche Farbe hat die Flamme, wenn Natrium verbrannt wird?",
+      "answers": ["Rot", "Blau", "Gelb", "Grün"],
+      "correctAnswer": "Gelb"
+    },
+    {
+      "question": "Welche Art von Reaktion ist die Knallgasreaktion?",
+      "answers": ["Synthesereaktion", "Zersetzungsreaktion", "Redoxreaktion", "Neutralisationsreaktion"],
+      "correctAnswer": "Redoxreaktion"
+    },
+    {
+      "question": "Was ist das chemische Symbol für Kalium?",
+      "answers": ["Ca", "K", "P", "Kr"],
+      "correctAnswer": "K"
+    },
+    {
+      "question": "Was ist die Elektronenkonfiguration von Helium?",
+      "answers": ["1s2", "1s1 2s1", "1s2 2s2", "1s1"],
+      "correctAnswer": "1s2"
+    },
+    {
+      "question": "Welcher pH-Wert gilt als neutral?",
+      "answers": ["3", "5", "7", "9"],
+      "correctAnswer": "7"
+    },
+    {
+      "question": "Welche der folgenden Substanzen ist eine Base?",
+      "answers": ["HCl", "NaOH", "H2SO4", "CH4"],
+      "correctAnswer": "NaOH"
+    }
+  ]
+  

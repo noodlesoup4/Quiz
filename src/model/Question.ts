@@ -1,4 +1,4 @@
-export default class Question {
+ class Question {
     question: string;
     answers: string[];
     correctAnswer: string;
@@ -9,3 +9,5 @@ export default class Question {
       this.correctAnswer = correctAnswer;
     }
   }
+
+  export default Question;

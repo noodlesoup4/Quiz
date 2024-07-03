@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Was ist die Einheit der Kraft?",
+      "answers": ["Joule", "Newton", "Watt", "Pascal"],
+      "correctAnswer": "Newton"
+    },
+    {
+      "question": "Wie lautet das zweite Newtonsche Gesetz?",
+      "answers": ["F = ma", "E = mc^2", "V = IR", "P = W/t"],
+      "correctAnswer": "F = ma"
+    },
+    {
+      "question": "Welche Art von Welle ist Schall?",
+      "answers": ["Elektromagnetische Welle", "Transversalwelle", "Longitudinalwelle", "Mikrowelle"],
+      "correctAnswer": "Longitudinalwelle"
+    },
+    {
+      "question": "Was ist die Lichtgeschwindigkeit im Vakuum?",
+      "answers": ["3 x 10^8 m/s", "3 x 10^6 m/s", "3 x 10^10 m/s", "3 x 10^5 m/s"],
+      "correctAnswer": "3 x 10^8 m/s"
+    },
+    {
+      "question": "Welche Energieform hat ein Objekt in Bewegung?",
+      "answers": ["Potentielle Energie", "Kinetische Energie", "Thermische Energie", "Chemische Energie"],
+      "correctAnswer": "Kinetische Energie"
+    },
+    {
+      "question": "Was ist die Einheit des elektrischen Widerstands?",
+      "answers": ["Volt", "Ampere", "Ohm", "Watt"],
+      "correctAnswer": "Ohm"
+    },
+    {
+      "question": "Wie lautet das Ohmsche Gesetz?",
+      "answers": ["V = IR", "F = ma", "E = mc^2", "P = IV"],
+      "correctAnswer": "V = IR"
+    },
+    {
+      "question": "Welcher Physiker ist bekannt für die Relativitätstheorie?",
+      "answers": ["Isaac Newton", "Albert Einstein", "Nikola Tesla", "Galileo Galilei"],
+      "correctAnswer": "Albert Einstein"
+    },
+    {
+      "question": "Was ist die Einheit der Arbeit?",
+      "answers": ["Joule", "Watt", "Newton", "Pascal"],
+      "correctAnswer": "Joule"
+    },
+    {
+      "question": "Was beschreibt der Begriff 'Halbwertszeit'?",
+      "answers": ["Die Zeit, die eine Welle benötigt, um sich zu halbieren", "Die Zeit, die ein Objekt benötigt, um auf die Hälfte seiner ursprünglichen Geschwindigkeit abzubremsen", "Die Zeit, die benötigt wird, damit die Hälfte einer radioaktiven Substanz zerfällt", "Die Zeit, die Licht benötigt, um eine Strecke von der Hälfte seiner Wellenlänge zurückzulegen"],
+      "correctAnswer": "Die Zeit, die benötigt wird, damit die Hälfte einer radioaktiven Substanz zerfällt"
+    },
+    {
+      "question": "Welche Kraft wirkt entgegen der Bewegungsrichtung eines Objekts und verlangsamt es?",
+      "answers": ["Schwerkraft", "Normalkraft", "Zentripetalkraft", "Reibungskraft"],
+      "correctAnswer": "Reibungskraft"
+    },
+    {
+      "question": "Was misst ein Voltmeter?",
+      "answers": ["Stromstärke", "Spannung", "Widerstand", "Leistung"],
+      "correctAnswer": "Spannung"
+    },
+    {
+      "question": "Welche der folgenden Aussagen beschreibt eine Konvektion?",
+      "answers": ["Wärmeübertragung durch direkte Berührung", "Wärmeübertragung durch elektromagnetische Wellen", "Wärmeübertragung durch Flüssigkeits- oder Gasströmung", "Wärmeübertragung durch Vakuum"],
+      "correctAnswer": "Wärmeübertragung durch Flüssigkeits- oder Gasströmung"
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Masse und Gewicht?",
+      "answers": ["Masse ist eine Kraft, Gewicht ist eine Energie", "Masse ist ortsunabhängig, Gewicht ist ortsabhängig", "Masse ist ortsabhängig, Gewicht ist ortsunabhängig", "Masse ist eine Energie, Gewicht ist eine Kraft"],
+      "correctAnswer": "Masse ist ortsunabhängig, Gewicht ist ortsabhängig"
+    },
+    {
+      "question": "Was ist die Frequenz einer Welle?",
+      "answers": ["Die Zeit, die eine Welle benötigt, um einen Zyklus abzuschließen", "Die Anzahl der Zyklen pro Sekunde", "Die Geschwindigkeit, mit der sich die Welle ausbreitet", "Die Entfernung zwischen zwei aufeinanderfolgenden Wellenbergen"],
+      "correctAnswer": "Die Anzahl der Zyklen pro Sekunde"
+    },
+    {
+      "question": "Welche Einheit wird verwendet, um die Leistung zu messen?",
+      "answers": ["Joule", "Newton", "Watt", "Ohm"],
+      "correctAnswer": "Watt"
+    },
+    {
+      "question": "Was ist die Ursache für den Treibhauseffekt?",
+      "answers": ["Reflektion von Sonnenstrahlen", "Absorption von Infrarotstrahlung durch Treibhausgase", "Wärmeübertragung durch Konduktion", "Erhöhung des Atmosphärendrucks"],
+      "correctAnswer": "Absorption von Infrarotstrahlung durch Treibhausgase"
+    },
+    {
+      "question": "Welche Art von Linse wird verwendet, um Licht zu bündeln?",
+      "answers": ["Konvexe Linse", "Konkave Linse", "Zylindrische Linse", "Plane Linse"],
+      "correctAnswer": "Konvexe Linse"
+    },
+    {
+      "question": "Wie lautet die Formel für die Berechnung der Dichte?",
+      "answers": ["Dichte = Masse x Volumen", "Dichte = Masse / Volumen", "Dichte = Volumen / Masse", "Dichte = Masse x Beschleunigung"],
+      "correctAnswer": "Dichte = Masse / Volumen"
+    },
+    {
+      "question": "Was ist der Unterschied zwischen Wechselstrom (AC) und Gleichstrom (DC)?",
+      "answers": ["Wechselstrom hat eine konstante Richtung, Gleichstrom wechselt die Richtung", "Wechselstrom wechselt die Richtung, Gleichstrom hat eine konstante Richtung", "Wechselstrom fließt nur durch Metalle, Gleichstrom durch alle Materialien", "Es gibt keinen Unterschied"],
+      "correctAnswer": "Wechselstrom wechselt die Richtung, Gleichstrom hat eine konstante Richtung"
+    }
+  ]
+  

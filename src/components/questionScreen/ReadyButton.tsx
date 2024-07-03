@@ -1,9 +1,11 @@
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import React from 'react';
+import { oceanTeal } from '@/src/model/Colors';
 
 interface CustomComponentProps {
     onPress: () => void;
     style?: any;  // Adding optional style prop
+    
 }
 
 const ReadyButton: React.FC<CustomComponentProps> = ({ onPress, style }) => {
@@ -19,10 +21,10 @@ export default ReadyButton;
 const styles = StyleSheet.create({
     button: {
         width: "80%",
-        backgroundColor: "#135D66",
+        backgroundColor: oceanTeal,
         marginVertical: 10,
         padding: 15,
-        borderRadius: 20,
+        borderRadius: 10,
         alignItems: "center"
     },
     text: {

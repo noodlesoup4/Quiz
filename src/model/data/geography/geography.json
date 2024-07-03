@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Welches ist das größte Land der Welt nach Fläche?",
+      "answers": ["Kanada", "China", "Russland", "USA"],
+      "correctAnswer": "Russland"
+    },
+    {
+      "question": "Wie heißt der längste Fluss der Welt?",
+      "answers": ["Nil", "Amazonas", "Jangtse", "Mississippi"],
+      "correctAnswer": "Amazonas"
+    },
+    {
+      "question": "In welchem Kontinent liegt der Himalaya?",
+      "answers": ["Europa", "Afrika", "Asien", "Südamerika"],
+      "correctAnswer": "Asien"
+    },
+    {
+      "question": "Welches Land hat die meisten Einwohner?",
+      "answers": ["Indien", "China", "USA", "Indonesien"],
+      "correctAnswer": "China"
+    },
+    {
+      "question": "Welche ist die größte Wüste der Welt?",
+      "answers": ["Gobi", "Sahara", "Kalahari", "Arabische Wüste"],
+      "correctAnswer": "Sahara"
+    },
+    {
+      "question": "Wie viele Kontinente gibt es auf der Erde?",
+      "answers": ["5", "6", "7", "8"],
+      "correctAnswer": "7"
+    },
+    {
+      "question": "Welche Hauptstadt liegt am weitesten nördlich?",
+      "answers": ["Oslo", "Reykjavik", "Helsinki", "Stockholm"],
+      "correctAnswer": "Reykjavik"
+    },
+    {
+      "question": "Welcher Ozean ist der größte?",
+      "answers": ["Indischer Ozean", "Atlantischer Ozean", "Arktischer Ozean", "Pazifischer Ozean"],
+      "correctAnswer": "Pazifischer Ozean"
+    },
+    {
+      "question": "In welchem Land liegt die Stadt Mumbai?",
+      "answers": ["Pakistan", "Bangladesch", "Sri Lanka", "Indien"],
+      "correctAnswer": "Indien"
+    },
+    {
+      "question": "Welcher Berg ist der höchste der Welt?",
+      "answers": ["K2", "Mount Everest", "Kangchendzönga", "Makalu"],
+      "correctAnswer": "Mount Everest"
+    },
+    {
+      "question": "Welches Meer liegt zwischen Europa und Afrika?",
+      "answers": ["Karibisches Meer", "Rotes Meer", "Schwarzes Meer", "Mittelmeer"],
+      "correctAnswer": "Mittelmeer"
+    },
+    {
+      "question": "Welche der folgenden Städte liegt in Australien?",
+      "answers": ["Auckland", "Sydney", "Toronto", "Kapstadt"],
+      "correctAnswer": "Sydney"
+    },
+    {
+      "question": "Welcher Fluss fließt durch Paris?",
+      "answers": ["Themse", "Seine", "Rhein", "Donau"],
+      "correctAnswer": "Seine"
+    },
+    {
+      "question": "Welches Land ist bekannt für seine zahlreichen Vulkane und heißen Quellen?",
+      "answers": ["Island", "Japan", "Italien", "Neuseeland"],
+      "correctAnswer": "Island"
+    },
+    {
+      "question": "Welches Land hat die größte Bevölkerungsdichte?",
+      "answers": ["Indien", "Monaco", "Singapur", "Bangladesch"],
+      "correctAnswer": "Monaco"
+    },
+    {
+      "question": "Welche Stadt ist die Hauptstadt von Kanada?",
+      "answers": ["Toronto", "Vancouver", "Montreal", "Ottawa"],
+      "correctAnswer": "Ottawa"
+    },
+    {
+      "question": "Welcher Staat ist flächenmäßig der größte in den USA?",
+      "answers": ["Texas", "Kalifornien", "Alaska", "Montana"],
+      "correctAnswer": "Alaska"
+    },
+    {
+      "question": "Welches ist das kleinste Land der Welt nach Fläche?",
+      "answers": ["Monaco", "San Marino", "Vatikanstadt", "Liechtenstein"],
+      "correctAnswer": "Vatikanstadt"
+    },
+    {
+      "question": "Welches Gebirge trennt Europa von Asien?",
+      "answers": ["Alpen", "Himalaya", "Ural", "Rocky Mountains"],
+      "correctAnswer": "Ural"
+    },
+    {
+      "question": "Welche Stadt ist die Hauptstadt von Brasilien?",
+      "answers": ["Rio de Janeiro", "São Paulo", "Brasília", "Salvador"],
+      "correctAnswer": "Brasília"
+    }
+  ]
+  

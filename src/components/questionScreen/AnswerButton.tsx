@@ -5,11 +5,12 @@ interface CustomComponentProps {
     onPress: () => void;
     answer: string;
     style?: any;  // Adding optional style prop
+    disabled?: boolean
 }
 
-const AnswerButton: React.FC<CustomComponentProps> = ({ answer, onPress, style }) => {
+const AnswerButton: React.FC<CustomComponentProps> = ({ answer, onPress, style, disabled }) => {
     return (
-        <TouchableOpacity onPress={onPress} style={[styles.button, style]}>
+        <TouchableOpacity onPress={onPress} style={[styles.button, style]} disabled = {disabled} >
             <Text style={styles.text}>{answer}</Text>
         </TouchableOpacity>
     );
@@ -19,6 +20,7 @@ export default AnswerButton;
 
 const styles = StyleSheet.create({
     button: {
+        bottom: 65,
         width: "80%",
         backgroundColor: "white",
         marginVertical: 10,

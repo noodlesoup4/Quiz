@@ -1,20 +1,20 @@
-import { StyleSheet, Text, View, SafeAreaView, Alert } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Alert } from 'react-native';
+import { useFonts } from 'expo-font';
+import { useLocalSearchParams } from 'expo-router';
+import QuestionController from '../controllers/QuestionController';
 import QuestionComponent from '../components/questionScreen/QuestionComponent';
 import AnswerButton from '../components/questionScreen/AnswerButton';
 import ReadyButton from '../components/questionScreen/ReadyButton';
-import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator';
-import { useRef } from 'react';
-import questions from '../assets/data/questions.json';
-import { useFonts } from 'expo-font';
+import Question from '../model/Question';
 
 const QuestionScreen = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
-  const [timeUp, setTimeUp] = useState(false);
-  const progressRef = useRef<ProgressRef>(null);
-
+  const [questions, setQuestions] = useState<Question[]>([]);
+  const { selectedCategories } = useLocalSearchParams();
+  const [canContinue, setCanContinue] = useState(false);
   const [fontsLoaded] = useFonts({
     'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
     'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
@@ -22,35 +22,44 @@ const QuestionScreen = () => {
     'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
   });
 
+  useEffect(() => {
+    const fetchQuestions = () => {
+      try {
+        const categoriesArray = JSON.parse(selectedCategories as string) as string[];
+        const questionData: Question[] = QuestionController.getQuestions(categoriesArray, 10);
+        setQuestions(questionData);
+      } catch (error) {
+        console.error('Error fetching questions:', error);
+        
+      }
+    };
+
+    fetchQuestions();
+  }, [selectedCategories]);
+
   const handleAnswerPress = (answer: string) => {
     setSelectedAnswer(answer);
-    progressRef.current?.pause();
-  }
-
-  const highlightCorrectAnswer = () => {
-    setTimeUp(true);
-    progressRef.current?.pause();
-  }
+    setCanContinue(true);
+    
+  };
 
   const handleReadyPress = () => {
-    if (timeUp || selectedAnswer) {
+    if (selectedAnswer) {
       if (selectedAnswer === questions[currentQuestionIndex].correctAnswer) {
         setScore(score + 1);
       }
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
-      setTimeUp(false);
-      progressRef.current?.reAnimate();
-    } else {
-      Alert.alert('Bitte wählen Sie eine Antwort aus');
+      setCanContinue(false);
     }
-  }
+  };
 
   useEffect(() => {
-    if (currentQuestionIndex >= questions.length) {
+    if (currentQuestionIndex >= questions.length && questions.length > 0) {
+      //TODO: statt alert router.push('Evaluation') für Bewertungsscreen ; Brauchen Maybe ein Routercontroller für MVC
       Alert.alert('Quiz beendet', `Ihr Punktestand: ${score}/${questions.length}`);
     }
-  }, [currentQuestionIndex]);
+  }, [currentQuestionIndex, questions.length]);
 
   if (!fontsLoaded) {
     return <View />;
@@ -68,26 +77,6 @@ const QuestionScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{currentQuestionIndex + 1}/{questions.length}</Text>
-      <View style={styles.progressContainer}>
-        <CircularProgress
-          ref={progressRef}
-          value={0}
-          radius={30}
-          maxValue={10}
-          initialValue={10}
-          progressValueColor={'#003C43'}
-          activeStrokeWidth={8}
-          inActiveStrokeWidth={8}
-          duration={10000}
-          strokeColorConfig={[
-            { color: 'red', value: 0 },
-            { color: 'orange', value: 3 },
-            { color: '#003C43', value: 3.5 },
-            { color: '#003C43', value: 10 },
-          ]}
-          onAnimationComplete={() => highlightCorrectAnswer()}
-        />
-      </View>
       <QuestionComponent question={questions[currentQuestionIndex].question} />
       <View style={styles.answers}>
         {questions[currentQuestionIndex].answers.map((answer, index) => {
@@ -95,69 +84,73 @@ const QuestionScreen = () => {
           const isSelected = answer === selectedAnswer;
           let buttonStyle = styles.button;
 
-          if (timeUp && isCorrect) {
+          if (isSelected && isCorrect) {
             buttonStyle = { ...styles.button, ...styles.correctAnswer };
           } else if (isSelected && !isCorrect) {
             buttonStyle = { ...styles.button, ...styles.wrongAnswer };
-          } else if (isSelected && isCorrect) {
-            buttonStyle = { ...styles.button, ...styles.correctAnswer };
+          }
+          else if (!isSelected && isCorrect && selectedAnswer !== null) {
+            buttonStyle = { ...styles.button, ...styles.correctAnswer }; // Show correct answer if a wrong answer was selected
           }
 
           return (
-            <AnswerButton key={index} answer={answer} onPress={() => handleAnswerPress(answer)} style={buttonStyle} />
+            <AnswerButton
+              key={index}
+              answer={answer}
+              onPress={() => handleAnswerPress(answer)}
+              style={buttonStyle}
+              disabled = {selectedAnswer !== null} //
+            />
           );
         })}
       </View>
-      <View style={styles.readyButton}>
-        <ReadyButton onPress={handleReadyPress} />
+      <View style={styles.readyButtonContainer}>
+        <ReadyButton onPress={handleReadyPress} style={[styles.readyButton, {opacity: canContinue ? 1: 0.40}]} />
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#EFF0F3",
     flex: 1,
-    justifyContent: 'flex-start',
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
   text: {
-    fontSize: 20,
-    margin: 20,
-  },
-  progressContainer: {
-    marginBottom: -25,
-    marginTop: 40,
-    zIndex: 2,
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 10,
   },
   answers: {
-    width: "100%",
-    alignItems: "center",
-  },
-  readyButton: {
-    marginTop: 20,
-    width: "100%",
-    alignItems: "center",
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width:'100%'
   },
   button: {
-    width: "80%",
-    backgroundColor: "white",
     marginVertical: 10,
-    padding: 15,
-    borderRadius: 20,
-    paddingVertical: 15, 
-    paddingHorizontal: 20,
+    padding: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#000',
   },
   correctAnswer: {
-    backgroundColor: '#CCE0DE',
-    borderColor: "#77B0AA",
-    borderWidth: 2,
-    paddingVertical: 13,
-    paddingHorizontal: 18
+    backgroundColor: 'green',
   },
   wrongAnswer: {
-    backgroundColor: '#F28C8C',
+    backgroundColor: 'red',
+  },
+  readyButtonContainer: {
+    position: 'absolute',
+    bottom: 60,
+    alignItems: 'center',
+    width: '100%',
+  },
+  readyButton: {
+    alignItems: 'center',
+    padding: 10
   },
 });
 
