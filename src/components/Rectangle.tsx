@@ -4,14 +4,14 @@ import { lightMint } from "../model/Colors";
 import { ReactNode } from "react";
 
 
-interface RectangleComponentProps {
+interface CustomButtonProps {
     children: ReactNode;
     onPress?: () => void;
     style? : ViewStyle;
     backgroundColor? : string;
 }
 
-const RectangleButtonComponent: React.FC<RectangleComponentProps> = ({children,onPress,style,backgroundColor}) => {
+const CustomButtonComponent: React.FC<CustomButtonProps> = ({children,onPress,style,backgroundColor}) => {
     return (
         <TouchableOpacity
             onPress={onPress}
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default RectangleButtonComponent;
+export default CustomButtonComponent;

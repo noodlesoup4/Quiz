@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Welche Religion folgt dem Koran?",
+      "answers": ["Christentum", "Judentum", "Hinduismus", "Islam"],
+      "correctAnswer": "Islam"
+    },
+    {
+      "question": "Wer gilt als der Begründer des Buddhismus?",
+      "answers": ["Jesus Christus", "Siddhartha Gautama", "Moses", "Muhammad"],
+      "correctAnswer": "Siddhartha Gautama"
+    },
+    {
+      "question": "Wie heißt das heilige Buch des Christentums?",
+      "answers": ["Torah", "Koran", "Bibel", "Veden"],
+      "correctAnswer": "Bibel"
+    },
+    {
+      "question": "Welches Fest feiern Juden zur Erinnerung an den Auszug aus Ägypten?",
+      "answers": ["Weihnachten", "Ostern", "Pessach", "Diwali"],
+      "correctAnswer": "Pessach"
+    },
+    {
+      "question": "Welche Religion hat ihre Ursprünge in Indien und betont die Lehren von Karma und Wiedergeburt?",
+      "answers": ["Hinduismus", "Islam", "Christentum", "Judentum"],
+      "correctAnswer": "Hinduismus"
+    },
+    {
+      "question": "Wie viele Säulen des Islam gibt es?",
+      "answers": ["3", "4", "5", "6"],
+      "correctAnswer": "5"
+    },
+    {
+      "question": "Wer führte die Israeliten laut der Bibel aus der ägyptischen Sklaverei?",
+      "answers": ["David", "Abraham", "Moses", "Salomo"],
+      "correctAnswer": "Moses"
+    },
+    {
+      "question": "Welches Symbol wird oft mit dem Christentum assoziiert?",
+      "answers": ["Kreuz", "Halbmond", "Davidstern", "Om"],
+      "correctAnswer": "Kreuz"
+    },
+    {
+      "question": "In welchem Land wurde der Hinduismus gegründet?",
+      "answers": ["China", "Ägypten", "Indien", "Griechenland"],
+      "correctAnswer": "Indien"
+    },
+    {
+      "question": "Was ist das zentrale Glaubensbekenntnis des Islam?",
+      "answers": ["Shahada", "Shema", "Apostolisches Glaubensbekenntnis", "Guru Granth Sahib"],
+      "correctAnswer": "Shahada"
+    },
+    {
+      "question": "Welcher religiöse Führer ist mit dem tibetischen Buddhismus verbunden?",
+      "answers": ["Papst", "Dalai Lama", "Imam", "Rabbi"],
+      "correctAnswer": "Dalai Lama"
+    },
+    {
+      "question": "Welche Religion verehrt Gott in Form der Heiligen Dreifaltigkeit?",
+      "answers": ["Hinduismus", "Islam", "Christentum", "Judentum"],
+      "correctAnswer": "Christentum"
+    },
+    {
+      "question": "Welches Fest wird im Hinduismus als Lichterfest gefeiert?",
+      "answers": ["Holi", "Pessach", "Diwali", "Ramadan"],
+      "correctAnswer": "Diwali"
+    },
+    {
+      "question": "Welches religiöse Textbuch ist im Judentum von zentraler Bedeutung?",
+      "answers": ["Koran", "Bibel", "Torah", "Veden"],
+      "correctAnswer": "Torah"
+    },
+    {
+      "question": "Wer ist der zentrale Prophet im Islam?",
+      "answers": ["Jesus", "Moses", "Muhammad", "Buddha"],
+      "correctAnswer": "Muhammad"
+    },
+    {
+      "question": "Welcher Feiertag markiert im Christentum die Geburt Jesu Christi?",
+      "answers": ["Ostern", "Weihnachten", "Pessach", "Pfingsten"],
+      "correctAnswer": "Weihnachten"
+    },
+    {
+      "question": "Was bedeutet das Wort 'Buddha'?",
+      "answers": ["Der Erleuchtete", "Der Gesandte", "Der Heilige", "Der Prophet"],
+      "correctAnswer": "Der Erleuchtete"
+    },
+    {
+      "question": "Welcher Feiertag wird im Islam zum Ende des Fastenmonats Ramadan gefeiert?",
+      "answers": ["Eid al-Adha", "Eid al-Fitr", "Ashura", "Hajj"],
+      "correctAnswer": "Eid al-Fitr"
+    },
+    {
+      "question": "Welches Symbol repräsentiert den Jainismus?",
+      "answers": ["Kreuz", "Halbmond", "Davidstern", "Hand mit Rad"],
+      "correctAnswer": "Hand mit Rad"
+    },
+    {
+      "question": "Welches der folgenden Bücher ist ein heiliger Text im Sikhismus?",
+      "answers": ["Guru Granth Sahib", "Koran", "Bibel", "Torah"],
+      "correctAnswer": "Guru Granth Sahib"
+    }
+  ]
+  

@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Welches ist das größte Landtier?",
+      "answers": ["Elefant", "Giraffe", "Nilpferd", "Nashorn"],
+      "correctAnswer": "Elefant"
+    },
+    {
+      "question": "Wie nennt man die Wissenschaft, die sich mit der Umwelt und den Lebewesen darin beschäftigt?",
+      "answers": ["Geologie", "Ökologie", "Zoologie", "Botanik"],
+      "correctAnswer": "Ökologie"
+    },
+    {
+      "question": "Welcher Baum ist bekannt für seine besonders lange Lebensdauer?",
+      "answers": ["Eiche", "Kiefer", "Mammutbaum", "Ahorn"],
+      "correctAnswer": "Mammutbaum"
+    },
+    {
+      "question": "Welcher Vogel kann rückwärts fliegen?",
+      "answers": ["Spatz", "Kolibri", "Adler", "Krähe"],
+      "correctAnswer": "Kolibri"
+    },
+    {
+      "question": "Was ist der größte Regenwald der Welt?",
+      "answers": ["Congo-Regenwald", "Amazonas-Regenwald", "Daintree-Regenwald", "Südostasiatischer Regenwald"],
+      "correctAnswer": "Amazonas-Regenwald"
+    },
+    {
+      "question": "Welche Tierart lebt sowohl im Wasser als auch an Land?",
+      "answers": ["Fische", "Vögel", "Amphibien", "Reptilien"],
+      "correctAnswer": "Amphibien"
+    },
+    {
+      "question": "Welcher Fluss ist der längste der Welt?",
+      "answers": ["Mississippi", "Nil", "Amazonas", "Jangtsekiang"],
+      "correctAnswer": "Nil"
+    },
+    {
+      "question": "Welche Tierart baut Dämme in Flüssen?",
+      "answers": ["Biber", "Otter", "Fische", "Frösche"],
+      "correctAnswer": "Biber"
+    },
+    {
+      "question": "Welches Tier hält einen Winterschlaf?",
+      "answers": ["Hase", "Fuchs", "Bär", "Eichhörnchen"],
+      "correctAnswer": "Bär"
+    },
+    {
+      "question": "Welcher Ozean ist der größte?",
+      "answers": ["Atlantischer Ozean", "Indischer Ozean", "Arktischer Ozean", "Pazifischer Ozean"],
+      "correctAnswer": "Pazifischer Ozean"
+    },
+    {
+      "question": "Welches Tier wird oft als König des Dschungels bezeichnet?",
+      "answers": ["Elefant", "Tiger", "Löwe", "Gorilla"],
+      "correctAnswer": "Tiger"
+    },
+    {
+      "question": "Welche Pflanzenart ist für ihre Fähigkeit bekannt, Insekten zu fangen und zu verdauen?",
+      "answers": ["Fleischfressende Pflanzen", "Farn", "Moos", "Kaktus"],
+      "correctAnswer": "Fleischfressende Pflanzen"
+    },
+    {
+      "question": "Welches Tier ist für seine Fähigkeit bekannt, sich in seinem Panzer zu verstecken?",
+      "answers": ["Schildkröte", "Schlange", "Frosch", "Krokodil"],
+      "correctAnswer": "Schildkröte"
+    },
+    {
+      "question": "Welcher Lebensraum ist für seine extrem niedrigen Temperaturen bekannt?",
+      "answers": ["Wüste", "Regenwald", "Tundra", "Savanne"],
+      "correctAnswer": "Tundra"
+    },
+    {
+      "question": "Welches Tier ist das schnellste an Land?",
+      "answers": ["Gepard", "Löwe", "Pferd", "Antilope"],
+      "correctAnswer": "Gepard"
+    },
+    {
+      "question": "Welcher Vogel hat die größte Flügelspannweite?",
+      "answers": ["Adler", "Kondor", "Albatros", "Strauß"],
+      "correctAnswer": "Albatros"
+    },
+    {
+      "question": "Welcher Baum produziert die meisten Sauerstoffmoleküle?",
+      "answers": ["Eiche", "Kiefer", "Ahorn", "Mammutbaum"],
+      "correctAnswer": "Mammutbaum"
+    },
+    {
+      "question": "Welches Tier ist für seine schwarz-weißen Streifen bekannt?",
+      "answers": ["Tiger", "Zebra", "Gepard", "Löwe"],
+      "correctAnswer": "Zebra"
+    },
+    {
+      "question": "Welcher Lebensraum bedeckt den größten Teil der Erde?",
+      "answers": ["Wälder", "Wüsten", "Ozeane", "Savannen"],
+      "correctAnswer": "Ozeane"
+    },
+    { 
+       "question": "Welche Pflanze ist bekannt für ihre Fähigkeit, Wasser in ihren Blättern zu speichern?",
+       "answers": ["Farn", "Moos", "Kaktus", "Alge"],
+       "correctAnswer": "Kaktus"
+    }
+  ]
+  

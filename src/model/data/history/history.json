@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Wer war der erste Präsident der Vereinigten Staaten?",
+      "answers": ["Abraham Lincoln", "Thomas Jefferson", "George Washington", "John Adams"],
+      "correctAnswer": "George Washington"
+    },
+    {
+      "question": "In welchem Jahr begann der Zweite Weltkrieg?",
+      "answers": ["1935", "1939", "1941", "1945"],
+      "correctAnswer": "1939"
+    },
+    {
+      "question": "Welcher Pharao ließ die Große Pyramide von Gizeh erbauen?",
+      "answers": ["Tutanchamun", "Ramses II", "Cheops", "Thutmosis III"],
+      "correctAnswer": "Cheops"
+    },
+    {
+      "question": "Welche Stadt wurde 79 n. Chr. durch den Ausbruch des Vesuvs zerstört?",
+      "answers": ["Pompeji", "Herculaneum", "Stabiae", "Neapel"],
+      "correctAnswer": "Pompeji"
+    },
+    {
+      "question": "Wer entdeckte 1492 Amerika?",
+      "answers": ["Ferdinand Magellan", "James Cook", "Christopher Columbus", "Leif Eriksson"],
+      "correctAnswer": "Christopher Columbus"
+    },
+    {
+      "question": "Welcher Krieg wird als der Erste Weltkrieg bezeichnet?",
+      "answers": ["Napoleonische Kriege", "Krimkrieg", "Erster Weltkrieg", "Zweiter Weltkrieg"],
+      "correctAnswer": "Erster Weltkrieg"
+    },
+    {
+      "question": "Wer war der Anführer der Nationalsozialistischen Deutschen Arbeiterpartei (NSDAP)?",
+      "answers": ["Joseph Stalin", "Benito Mussolini", "Adolf Hitler", "Winston Churchill"],
+      "correctAnswer": "Adolf Hitler"
+    },
+    {
+      "question": "Welche Mauer trennte Deutschland von 1961 bis 1989?",
+      "answers": ["Chinesische Mauer", "Berliner Mauer", "Hadrianswall", "Maginot-Linie"],
+      "correctAnswer": "Berliner Mauer"
+    },
+    {
+      "question": "Welches antike Reich wurde von Alexander dem Großen erobert?",
+      "answers": ["Römisches Reich", "Persisches Reich", "Ägyptisches Reich", "Maurya-Reich"],
+      "correctAnswer": "Persisches Reich"
+    },
+    {
+      "question": "Wer schrieb die 'Ilias' und die 'Odyssee'?",
+      "answers": ["Sokrates", "Aristoteles", "Platon", "Homer"],
+      "correctAnswer": "Homer"
+    },
+    {
+      "question": "In welchem Jahr wurde die Berliner Mauer errichtet?",
+      "answers": ["1945", "1953", "1961", "1989"],
+      "correctAnswer": "1961"
+    },
+    {
+      "question": "Welcher britische Monarch war bekannt für seine sechs Ehen?",
+      "answers": ["Heinrich VIII", "Richard Löwenherz", "Eduard III", "Karl I"],
+      "correctAnswer": "Heinrich VIII"
+    },
+    {
+      "question": "Welche Revolution führte zur Unabhängigkeit der Vereinigten Staaten?",
+      "answers": ["Französische Revolution", "Industrielle Revolution", "Amerikanische Revolution", "Russische Revolution"],
+      "correctAnswer": "Amerikanische Revolution"
+    },
+    {
+      "question": "Welches historische Ereignis fand am 14. Juli 1789 statt?",
+      "answers": ["Boston Tea Party", "Ermordung von Julius Caesar", "Sturm auf die Bastille", "Ermordung von Abraham Lincoln"],
+      "correctAnswer": "Sturm auf die Bastille"
+    },
+    {
+      "question": "Wer war der erste Kaiser des Römischen Reiches?",
+      "answers": ["Julius Caesar", "Augustus", "Nero", "Caligula"],
+      "correctAnswer": "Augustus"
+    },
+    {
+      "question": "Welches Dokument wurde 1215 in England unterzeichnet?",
+      "answers": ["Vertrag von Versailles", "Magna Carta", "Bill of Rights", "Habeas Corpus"],
+      "correctAnswer": "Magna Carta"
+    },
+    {
+      "question": "Wer führte die Reformation im 16. Jahrhundert an?",
+      "answers": ["Johannes Calvin", "Martin Luther", "Ignatius von Loyola", "Henry VIII"],
+      "correctAnswer": "Martin Luther"
+    },
+    {
+      "question": "Welcher Konflikt wurde als 'Der große Krieg' bekannt?",
+      "answers": ["Hundertjähriger Krieg", "Erster Weltkrieg", "Kalter Krieg", "Zweiter Weltkrieg"],
+      "correctAnswer": "Erster Weltkrieg"
+    },
+    {
+      "question": "In welchem Jahr landeten die ersten Menschen auf dem Mond?",
+      "answers": ["1957", "1965", "1969", "1972"],
+      "correctAnswer": "1969"
+    },
+    {
+      "question": "Wer war die erste weibliche Premierministerin des Vereinigten Königreichs?",
+      "answers": ["Angela Merkel", "Margaret Thatcher", "Indira Gandhi", "Theresa May"],
+      "correctAnswer": "Margaret Thatcher"
+    }
+  ]
+  

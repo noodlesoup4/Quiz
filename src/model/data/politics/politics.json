@@ -1,0 +1,103 @@
+[
+    {
+      "question": "Wer ist der derzeitige Bundeskanzler von Deutschland?",
+      "answers": ["Angela Merkel", "Olaf Scholz", "Frank-Walter Steinmeier", "Markus Söder"],
+      "correctAnswer": "Olaf Scholz"
+    },
+    {
+      "question": "Welches Land hat die meisten Mitglieder im US-Repräsentantenhaus?",
+      "answers": ["Kalifornien", "Texas", "New York", "Florida"],
+      "correctAnswer": "Kalifornien"
+    },
+    {
+      "question": "Wie nennt man das Oberhaus des US-Kongresses?",
+      "answers": ["Repräsentantenhaus", "Senat", "Kabinett", "Bundestag"],
+      "correctAnswer": "Senat"
+    },
+    {
+      "question": "Welches Dokument ist die Grundlage der US-amerikanischen Regierung?",
+      "answers": ["Magna Carta", "Unabhängigkeitserklärung", "Verfassung", "Bill of Rights"],
+      "correctAnswer": "Verfassung"
+    },
+    {
+      "question": "Wer war der erste Bundeskanzler der Bundesrepublik Deutschland?",
+      "answers": ["Konrad Adenauer", "Willy Brandt", "Helmut Kohl", "Gerhard Schröder"],
+      "correctAnswer": "Konrad Adenauer"
+    },
+    {
+      "question": "Welches Amt wird in den Vereinigten Staaten alle vier Jahre gewählt?",
+      "answers": ["Senator", "Vertreter", "Präsident", "Richter"],
+      "correctAnswer": "Präsident"
+    },
+    {
+      "question": "Welches politische System herrscht in Nordkorea?",
+      "answers": ["Demokratie", "Monarchie", "Diktatur", "Republik"],
+      "correctAnswer": "Diktatur"
+    },
+    {
+      "question": "Wie nennt man das politische System, in dem das Volk die Regierung wählt?",
+      "answers": ["Autokratie", "Theokratie", "Demokratie", "Oligarchie"],
+      "correctAnswer": "Demokratie"
+    },
+    {
+      "question": "Wer war der Präsident der Sowjetunion während ihres Zerfalls?",
+      "answers": ["Leonid Breschnew", "Nikita Chruschtschow", "Michail Gorbatschow", "Boris Jelzin"],
+      "correctAnswer": "Michail Gorbatschow"
+    },
+    {
+      "question": "Welches Land ist kein ständiges Mitglied des UN-Sicherheitsrates?",
+      "answers": ["Frankreich", "Deutschland", "China", "Russland"],
+      "correctAnswer": "Deutschland"
+    },
+    {
+      "question": "Wie viele Mitglieder hat der US-Senat?",
+      "answers": ["50", "100", "200", "435"],
+      "correctAnswer": "100"
+    },
+    {
+      "question": "Wer ist das Staatsoberhaupt im Vereinigten Königreich?",
+      "answers": ["Premierminister", "Präsident", "König oder Königin", "Bundeskanzler"],
+      "correctAnswer": "König oder Königin"
+    },
+    {
+      "question": "Wie nennt man die wirtschaftliche Theorie, die auf freiem Markt und privatem Eigentum basiert?",
+      "answers": ["Kommunismus", "Sozialismus", "Kapitalismus", "Faschismus"],
+      "correctAnswer": "Kapitalismus"
+    },
+    {
+      "question": "Welche Organisation wurde gegründet, um den internationalen Frieden und die Sicherheit zu wahren?",
+      "answers": ["NATO", "Europäische Union", "Vereinte Nationen", "OPEC"],
+      "correctAnswer": "Vereinte Nationen"
+    },
+    {
+      "question": "Welche Stadt ist Sitz des Internationalen Gerichtshofs?",
+      "answers": ["Genf", "New York", "Den Haag", "Brüssel"],
+      "correctAnswer": "Den Haag"
+    },
+    {
+      "question": "Welches Land hat das Zweikammersystem aus House of Commons und House of Lords?",
+      "answers": ["Kanada", "Australien", "Großbritannien", "Indien"],
+      "correctAnswer": "Großbritannien"
+    },
+    {
+      "question": "Welche politische Ideologie strebt eine klassenlose Gesellschaft an?",
+      "answers": ["Konservatismus", "Liberalismus", "Kommunismus", "Faschismus"],
+      "correctAnswer": "Kommunismus"
+    },
+    {
+      "question": "Wie heißt das Parlament der Europäischen Union?",
+      "answers": ["Bundestag", "Nationalversammlung", "Europäisches Parlament", "Kongress"],
+      "correctAnswer": "Europäisches Parlament"
+    },
+    {
+      "question": "Wer ist der Generalsekretär der Vereinten Nationen?",
+      "answers": ["António Guterres", "Ban Ki-moon", "Kofi Annan", "Boutros Boutros-Ghali"],
+      "correctAnswer": "António Guterres"
+    },
+    {
+      "question": "Welcher Vertrag bildete die Grundlage für die Europäische Union?",
+      "answers": ["Vertrag von Maastricht", "Vertrag von Versailles", "Vertrag von Rom", "Vertrag von Lissabon"],
+      "correctAnswer": "Vertrag von Maastricht"
+    }
+  ]
+  
