@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5, FontAwesome, MaterialIcons, FontAwesome6 } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import {  white } from '../model/Colors'; // Assuming 'constants/Colors' holds color definitions
 
 const categories = [
@@ -21,6 +21,7 @@ export default function CategorySelectionScreen() {
   const [canContinue, setCanContinue] = useState(false); // State for continue button
   const [randomSelected, setRandomSelected] = useState(false);
   const router = useRouter();
+  const {mode} = useLocalSearchParams();
 
 
   const handlePress = (index: number) => {
@@ -87,7 +88,7 @@ export default function CategorySelectionScreen() {
             }
             router.push({
               pathname: 'QuestionScreen',
-              params : {selectedCategories : JSON.stringify(selectedCategories)}
+              params : {selectedCategories : JSON.stringify(selectedCategories),mode}
             })
           } 
         }

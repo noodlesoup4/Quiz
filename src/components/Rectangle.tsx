@@ -1,6 +1,6 @@
 
 import { TouchableOpacity, Text, StyleSheet, ViewStyle } from "react-native";
-import { lightMint } from "../model/Colors";
+import { lightMint, white } from "../model/Colors";
 import { ReactNode } from "react";
 
 
@@ -30,11 +30,12 @@ const CustomButtonComponent: React.FC<CustomButtonProps> = ({children,onPress,st
 const styles = StyleSheet.create({
 
     button: {
-        height: 50,
+        top: 40,
+        height: 90,
         width: 200,
-        borderRadius: 10,
-        backgroundColor: lightMint,
-        margin: 40,
+        borderRadius: 15,
+        backgroundColor: white,
+        margin: 35,
         alignItems: 'center',
         justifyContent: 'center'
 
