@@ -66,6 +66,7 @@ const QuestionScreen = () => {
   }
 
   if (currentQuestionIndex >= questions.length) {
+    //router.push("EvaluationScreen")
     return (
       <SafeAreaView style={styles.container}>
         <Text style={styles.text}>Quiz beendet!</Text>
