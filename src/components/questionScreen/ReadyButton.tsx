@@ -20,7 +20,7 @@ export default ReadyButton;
 
 const styles = StyleSheet.create({
     button: {
-        width: "80%",
+        width: "90%",
         backgroundColor: oceanTeal,
         marginVertical: 10,
         padding: 15,

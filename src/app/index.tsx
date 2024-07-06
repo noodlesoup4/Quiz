@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, SafeAreaView, StatusBar, Text } from 'react-native';
 import QuestionController from '../controllers/QuestionController';
 
 
@@ -8,6 +8,7 @@ import Logo from '../assets/svgs/Quiz-App-Logo.svg';
 
 import  PlayButtonComponent  from '../components/PlayButton';
 import { LinearGradient } from 'expo-linear-gradient';
+import { router } from 'expo-router';
 
 /*
 const categories = ['chemistry', 'geography'];
