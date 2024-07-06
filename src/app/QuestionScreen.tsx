@@ -17,8 +17,6 @@ const QuestionScreen = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const { selectedCategories, mode } = useLocalSearchParams();
   const [canContinue, setCanContinue] = useState(false);
-  const oneMinute = 60;
-  const [timer, setTimer] = useState(oneMinute);
   const [loading, setLoading] = useState(true);
   const [progressKey, setProgressKey] = useState(0); //state to manage progress key
   const decrementOneSec = 15000;
@@ -46,6 +44,7 @@ const QuestionScreen = () => {
   }, [selectedCategories]);
 
   const endQuiz = () => {
+    console.log("End of Quiz");
     router.push({ pathname: 'EvaluationScreen', params: { score, total: questions.length } });
   };
 
@@ -64,7 +63,6 @@ const QuestionScreen = () => {
       setSelectedAnswer(null);
       setCanContinue(false);
     } else if (selectedAnswer && mode === 'Survival') {
-      setTimer(oneMinute);
       if (isCorrect) {
         setScore(score + 1);
         setProgressKey(prevKey=>prevKey+1); // Reset progress key to restart CircularProgress
