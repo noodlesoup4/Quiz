@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5, FontAwesome, MaterialIcons, FontAwesome6 } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import {  white } from '../model/Colors'; // Assuming 'constants/Colors' holds color definitions
+import {  midnightTeal, paleMist, white } from '../model/Colors'; 
 
 const categories = [
   { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" /> },
@@ -51,12 +51,12 @@ export default function CategorySelectionScreen() {
 
   return (
     <LinearGradient
-      colors={['#135D66', '#EFF0F3']}
+      colors={[midnightTeal, paleMist]}
       style={styles.container}
       locations={[0.2, 0.2]}
     >
-      <View>
-        <Text style={styles.header}>Kategorie auswählen</Text>
+      <View style={styles.headerContainer}>
+        <Text style={styles.headerText}>Kategorie auswählen</Text>
       </View>
       <View style={styles.grid}>
         {categories.map((category, index) => (
@@ -105,12 +105,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    marginTop: -2,
+  headerText: {
     fontSize: 24,
     color: 'white',
   },
+  headerContainer: {
+    position: 'absolute',
+    top: '8%', 
+  },
   grid: {
+    top: '5%',
     width: '90%',
     flexDirection: 'row',
     flexWrap: 'wrap',

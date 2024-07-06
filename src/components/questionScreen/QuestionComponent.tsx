@@ -18,6 +18,7 @@ export default QuestionComponent;
 
 const styles = StyleSheet.create({
     container: {
+        top:'3%',
         backgroundColor: "white",
         width: "85%",
         height:"25%",

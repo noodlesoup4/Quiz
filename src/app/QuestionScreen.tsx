@@ -7,6 +7,8 @@ import QuestionComponent from '../components/questionScreen/QuestionComponent';
 import AnswerButton from '../components/questionScreen/AnswerButton';
 import ReadyButton from '../components/questionScreen/ReadyButton';
 import Question from '../model/Question';
+import CircularProgress from 'react-native-circular-progress-indicator';
+
 
 const QuestionScreen = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -18,6 +20,8 @@ const QuestionScreen = () => {
   const oneMinute = 60;
   const [timer, setTimer] = useState(oneMinute);
   const [loading, setLoading] = useState(true);
+  const [progressKey, setProgressKey] = useState(0); //state to manage progress key
+  const decrementOneSec = 15000;
 
   const [fontsLoaded] = useFonts({
     'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
@@ -41,23 +45,6 @@ const QuestionScreen = () => {
     fetchQuestions();
   }, [selectedCategories]);
 
-  useEffect(() => {
-    if (mode === 'Survival') {
-      const timerInterval = setInterval(() => {
-        setTimer((prevTimer) => {
-          if (prevTimer === 1) {
-            clearInterval(timerInterval);
-            endQuiz();
-            return 60;
-          }
-          return prevTimer - 1;
-        });
-      }, 1000);
-
-      return () => clearInterval(timerInterval);
-    }
-  }, [mode]);
-
   const endQuiz = () => {
     router.push({ pathname: 'EvaluationScreen', params: { score, total: questions.length } });
   };
@@ -80,6 +67,7 @@ const QuestionScreen = () => {
       setTimer(oneMinute);
       if (isCorrect) {
         setScore(score + 1);
+        setProgressKey(prevKey=>prevKey+1); // Reset progress key to restart CircularProgress
       } else {
         endQuiz();
       }
@@ -103,12 +91,31 @@ const QuestionScreen = () => {
 
   const hasMoreQuestions = currentQuestionIndex < questions.length;
 
+ 
   return (
     <SafeAreaView style={styles.container}>
       {mode === 'Normal' && hasMoreQuestions && (
         <Text style={styles.text}>{currentQuestionIndex + 1}/{questions.length}</Text>
       )}
-      {mode === 'Survival' && hasMoreQuestions && <Text style={styles.timer}>Zeit: {timer}s</Text>}
+      {mode === 'Survival' && hasMoreQuestions && (
+      <View style = {styles.timer}>
+        <CircularProgress 
+        key={progressKey} 
+        value={0} 
+        initialValue={15} 
+        maxValue={15} 
+        radius={40} 
+        progressValueColor='black' 
+        duration={decrementOneSec}
+        strokeColorConfig={[
+          {color: 'green',value: 10}, 
+          {color: 'yellowgreen', value: 5},
+          {color: 'red',value: 3}
+        ]} 
+        onAnimationComplete={()=> endQuiz()} 
+        />
+      </View>
+      )}
       {hasMoreQuestions ? (
         <>
           <QuestionComponent question={questions[currentQuestionIndex].question} />
@@ -142,7 +149,8 @@ const QuestionScreen = () => {
           </View>
         </>
       ) : (
-        <Text style={styles.text}>Quiz beendet! Dein Punktestand: {score}/{questions.length}</Text>
+        <View>
+        </View>
       )}
     </SafeAreaView>
   );
@@ -155,15 +163,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
   },
-  timer: {
-    fontSize: 20,
-    color: 'red',
-    marginBottom: 20,
-  },
   text: {
     fontSize: 24,
     fontWeight: 'bold',
     marginVertical: 10,
+  },
+  timer: {
+    top: '4%',
+    zIndex: 1
   },
   answers: {
     flex: 1,

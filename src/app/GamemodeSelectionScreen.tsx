@@ -3,46 +3,58 @@ import React from 'react'
 import { LinearGradient } from 'expo-linear-gradient'
 import CustomButtonComponent from '../components/Rectangle'
 import { router } from 'expo-router'
+import { midnightTeal, paleMist, white } from '../model/Colors'
+
 
 const GamemodeSelectionScreen = () => {
-  
+  const custom = 'Custom';
+  const normal = 'Normal';
+   const survival = 'Survival';
   //When a mode is selected on GamemodeSelectionScreen, 
   //store this information so it can be accessed on QuestionScreen.
   const handleModeSelection = (mode: string) => {
-    router.push({ pathname: './CategorySelectionScreen', params: { mode } });
+    if(mode === custom) {
+      router.push({pathname: 'CustomModeScreen',params: { mode }})
+    }
+    else{
+      router.push({ pathname: './CategorySelectionScreen', params: { mode } });
+    }
+    
   };
   
   
+ 
   return (
    <LinearGradient
-      colors={['#135D66', '#EFF0F3']}
+      colors={[midnightTeal, paleMist]}
       style={styles.container}
       locations={[0.2, 0.2]}
     >
       
-      <View>
-        <Text style={styles.header}>Spielmodus auswählen</Text>
+      <View style={styles.headerContainer}>
+        <Text style ={styles.headerText}>Spielmodus auswählen</Text>
       </View>
-      
-    <CustomButtonComponent onPress={() => handleModeSelection('Normal')}>
+
+    <View>
+    <CustomButtonComponent onPress={() => handleModeSelection(normal)}>
       <Text style = {styles.buttonText} >
         Normal
       </Text>
     </CustomButtonComponent>
 
-    <CustomButtonComponent onPress={() => handleModeSelection('Survival')}>
+    <CustomButtonComponent onPress={() => handleModeSelection(survival)}>
       <Text style = {styles.buttonText} >
         Survival
       </Text>
     </CustomButtonComponent>
 
-    <CustomButtonComponent>
+    <CustomButtonComponent onPress={() => handleModeSelection(custom)}>
       <Text style = {styles.buttonText} >
         Custom
       </Text>
     </CustomButtonComponent>
     
-
+    </View>  
 
     </LinearGradient>
 
@@ -57,10 +69,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    marginTop: -120,
+  headerContainer: {
+    position: 'absolute',
+    top: '8%',
+  },
+  headerText: {
     fontSize: 24,
-    color: 'white',
+    color: white,
   },
   buttonText: {
     fontSize: 18,

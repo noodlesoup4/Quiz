@@ -1,19 +1,10 @@
-import { StyleSheet, View, TouchableOpacity, SafeAreaView, StatusBar } from 'react-native';
-import QuestionController from '../controllers/QuestionController';
-
-
+import { StyleSheet, SafeAreaView} from 'react-native';
 import { midnightTeal } from '../model/Colors';
-
 import Logo from '../assets/svgs/Quiz-App-Logo.svg';
-
 import  PlayButtonComponent  from '../components/PlayButton';
 import { LinearGradient } from 'expo-linear-gradient';
 
-/*
-const categories = ['chemistry', 'geography'];
-const fetchedQuestions = QuestionController.getQuestions(categories, 10); // Fetch 10 questions as an example
-console.log('Fetched Questions:', fetchedQuestions);
-*/
+
 const HomeScreen = () => {
 
 
