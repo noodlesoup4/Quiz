@@ -43,10 +43,7 @@ const QuestionScreen = () => {
     fetchQuestions();
   }, [selectedCategories]);
 
-  const endQuiz = () => {
-    console.log("End of Quiz");
-    router.push({ pathname: 'EvaluationScreen', params: { score, total: questions.length } });
-  };
+  
 
   const handleAnswerPress = (answer: string) => {
     setSelectedAnswer(answer);
@@ -67,7 +64,7 @@ const QuestionScreen = () => {
         setScore(score + 1);
         setProgressKey(prevKey=>prevKey+1); // Reset progress key to restart CircularProgress
       } else {
-        endQuiz();
+        QuestionController.endQuiz(score,questions.length,'Survival');
       }
 
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -79,7 +76,7 @@ const QuestionScreen = () => {
   useEffect(() => {
     const reachedEndOfQuiz = currentQuestionIndex >= questions.length && questions.length > 0;
     if (reachedEndOfQuiz && mode === 'Normal') {
-      endQuiz();
+      QuestionController.endQuiz(score,questions.length,'Normal');
     }
   }, [currentQuestionIndex, questions.length]);
 
@@ -110,7 +107,7 @@ const QuestionScreen = () => {
           {color: 'yellowgreen', value: 5},
           {color: 'red',value: 3}
         ]} 
-        onAnimationComplete={()=> endQuiz()} 
+        onAnimationComplete={()=> QuestionController.endQuiz(score,questions.length,'Survival')} 
         />
       </View>
       )}
