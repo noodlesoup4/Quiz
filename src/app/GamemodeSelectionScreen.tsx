@@ -25,38 +25,29 @@ const GamemodeSelectionScreen = () => {
   
  
   return (
-   <LinearGradient
-      colors={[midnightTeal, paleMist]}
-      style={styles.container}
-      locations={[0.2, 0.2]}
-    >
+   <View style={styles.container}>
       
-      <View style={styles.headerContainer}>
-        <Text style ={styles.headerText}>Spielmodus auswählen</Text>
+      <View style={styles.header}>
+        <Text style ={styles.headerText}>Spielmodus</Text>
+        <Text style ={styles.headerText}>auswählen</Text>
       </View>
 
-    <View>
-    <CustomButtonComponent onPress={() => handleModeSelection(normal)}>
-      <Text style = {styles.buttonText} >
-        Normal
-      </Text>
-    </CustomButtonComponent>
+      <View style={styles.content}>
+        <CustomButtonComponent style={styles.button} onPress={() => handleModeSelection(normal)}>
+          <Text style = {styles.buttonText}>Normal</Text>
+        </CustomButtonComponent>
 
-    <CustomButtonComponent onPress={() => handleModeSelection(survival)}>
-      <Text style = {styles.buttonText} >
-        Survival
-      </Text>
-    </CustomButtonComponent>
+        <CustomButtonComponent style={styles.button} onPress={() => handleModeSelection(survival)}>
+          <Text style = {styles.buttonText} >Survival</Text>
+        </CustomButtonComponent>
 
-    <CustomButtonComponent onPress={() => handleModeSelection(custom)}>
-      <Text style = {styles.buttonText} >
-        Custom
-      </Text>
-    </CustomButtonComponent>
-    
-    </View>  
+        <CustomButtonComponent style={styles.button} onPress={() => handleModeSelection(custom)}>
+          <Text style = {styles.buttonText} >Custom</Text>
+        </CustomButtonComponent>
+      
+      </View>  
 
-    </LinearGradient>
+    </View>
 
   )
 }
@@ -67,18 +58,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    backgroundColor: "#EFF0F3"
   },
-  headerContainer: {
-    position: 'absolute',
-    top: '8%',
+  header: {
+    backgroundColor: "#135D66",
+    width: "100%",
+    flex: 0.2,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  content: {
+    flex: 0.8,
+    width: "100%",
+    alignItems: "center",
   },
   headerText: {
     fontSize: 24,
     color: white,
   },
+  button: {
+    width: "80%",
+    margin: 30,
+  },
   buttonText: {
-    fontSize: 18,
+    fontSize: 24,
     color: 'teal',
   },
 })
