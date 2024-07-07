@@ -1,17 +1,37 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { useFonts } from 'expo-font';
+import React, { useState } from 'react';
+import { StyleSheet, Text, TouchableOpacity, View, Alert } from 'react-native';
+import { useRouter } from 'expo-router';
+import { Picker } from '@react-native-picker/picker';
 
-const CustomModeScreen = () => {
-    const [fontsLoaded] = useFonts({
-        'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
-        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-        'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
-        'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
-      });
+const CustomModeScreen: React.FC = () => {
+  const [questionCount, setQuestionCount] = useState<number | null>(null);
+  const [timer, setTimer] = useState<number | null>(null);
+  const router = useRouter();
+
+  const handleNext = () => {
+    if (questionCount === null || timer === null) {
+      Alert.alert("Ungültige Eingabe", "Bitte wählen Sie eine gültige Anzahl der Fragen und eine Timerlänge.");
+      return;
+    }
+
+    router.push({
+      pathname: '/CategorySelectionScreen', 
+      params: {
+        questionCount: questionCount,
+        timer: timer
+      }
+    });
+  };
+
+  const generateOptions = (min: number, max: number, step: number) => {
+    const options: { label: string, value: number }[] = [];
+    for (let i = min; i <= max; i += step) {
+      options.push({ label: i.toString(), value: i });
+    }
+    return options;
+  };
 
   return (
-    
     <View style={styles.container}>
         <View style={styles.header}>
             <Text style={[styles.text, styles.headerText]}>Custom Mode</Text>
@@ -25,7 +45,17 @@ const CustomModeScreen = () => {
             <Text style={[styles.text, styles.h2]}>Anzahl der Fragen</Text>
             <Text style={[styles.text, styles.h3]}>wähle zwischen 10 und 50 Fragen</Text>
         
-        <TextInput style={styles.textInput} placeholder='Anzahl eingeben' placeholderTextColor="lightgrey"></TextInput>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={questionCount}
+                style={styles.picker}
+                onValueChange={(itemValue) => setQuestionCount(itemValue)}
+              >
+                {generateOptions(10, 50, 1).map((option) => (
+                  <Picker.Item key={option.value} label={option.label} value={option.value} />
+                ))}
+              </Picker>
+            </View>
         </View>
 
         <View style={styles.divider}></View>
@@ -33,17 +63,27 @@ const CustomModeScreen = () => {
         <View style={styles.inputContainer}>
             <Text style={[styles.text, styles.h2]}>Timerlänge</Text>
             <Text style={[styles.text, styles.h3]}>wähle zwischen 10 und 60 Sekunden</Text>
-            <TextInput style={styles.textInput} placeholder='Timerlänge eingeben' placeholderTextColor="lightgrey"></TextInput>
+            <View style={styles.pickerContainer}>
+              <Picker
+                selectedValue={timer}
+                style={styles.picker}
+                onValueChange={(itemValue) => setTimer(itemValue)}
+              >
+                {generateOptions(10, 60, 5).map((option) => (
+                  <Picker.Item key={option.value} label={option.label} value={option.value} />
+                ))}
+              </Picker>
+            </View>
         </View>
         
-        <TouchableOpacity style={styles.completedButton}>
+        <TouchableOpacity style={styles.completedButton} onPress={handleNext}>
             <Text style={[styles.text, styles.buttonText]}>Weiter</Text>
         </TouchableOpacity>
     </View>
-  )
-}
+  );
+};
 
-export default CustomModeScreen
+export default CustomModeScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -59,7 +99,6 @@ const styles = StyleSheet.create({
         backgroundColor: "lightgrey"
     },
     text: {
-        fontFamily: "Lato-Bold",
         color: "#383838"
     },
     header: {
@@ -83,7 +122,6 @@ const styles = StyleSheet.create({
     h3: {
         fontSize: 14,
         margin: 5,
-        fontFamily: "Lato-Regular",
         color: "#949494"
     },
     completedButton: {
@@ -97,20 +135,21 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 15,
         color: "white",
-        fontFamily: 'Lato-Bold',
-    },
-    textInput: {
-        paddingHorizontal: 15,
-        borderRadius: 15,
-        width: "80%",
-        height: 50,
-        backgroundColor: "white",
-        fontFamily: "Lato-Regular",
-        marginVertical: 20,
     },
     inputContainer: {
         alignItems: "center",
         width: "100%",
-
-    }
-})
+    },
+    pickerContainer: {
+        width: "80%",
+        height: 50,
+        backgroundColor: "white",
+        borderRadius: 15,
+        overflow: 'hidden',
+        marginVertical: 20,
+    },
+    picker: {
+        width: "100%",
+        height: "100%",
+    },
+});
