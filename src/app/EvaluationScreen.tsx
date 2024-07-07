@@ -1,7 +1,7 @@
 import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font'
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 
 const EvaluationScreen = () => {
 
@@ -40,9 +40,20 @@ const EvaluationScreen = () => {
 
         <View style={styles.divider}></View>
 
-        <TouchableOpacity style={styles.newGameButton}>
+        {/*<TouchableOpacity onPress={() => router.push({
+              pathname: 'QuestionScreen',
+              params : {selectedCategories : JSON.stringify(selectedCategories),mode, questionCount, timer}
+            })}
+            style={styles.newGameButton}>
+            <Text style={[styles.text, styles.buttonText]}>schneller Neustart</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => router.push({ pathname: './CategorySelectionScreen', params: { mode } })} style={styles.newGameButton}>
+            <Text style={[styles.text, styles.buttonText]}>Neues Spiel starten</Text>
+        </TouchableOpacity>*/}
+        <TouchableOpacity onPress={() => router.push("./GamemodeSelectionScreen")} style={styles.newGameButton}>
             <Text style={[styles.text, styles.buttonText]}>Neues Spiel starten</Text>
         </TouchableOpacity>
+        
     </View>
   )
 }
