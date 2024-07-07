@@ -1,8 +1,27 @@
 import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { useFonts } from 'expo-font'
+import { useLocalSearchParams } from 'expo-router';
 
 const EvaluationScreen = () => {
+
+    const params = useLocalSearchParams();
+  
+    const score = Array.isArray(params.score) ? parseFloat(params.score[0]) : parseFloat(params.score || '0');
+    const total = Array.isArray(params.total) ? parseFloat(params.total[0]) : parseFloat(params.total || '0');
+    const mode = Array.isArray(params.mode) ? params.mode[0] : params.mode || 'unknown';
+
+    let modeText;
+    if (mode === 'Normal') {
+        modeText = 'Du hast \n' + score + ' Fragen von ' + total + ' Fragen \nrichtig beantwortet.';
+    } else if (mode === 'Survival') {
+        modeText = 'Du hast \n' + score + ' Fragen Überlebt.';
+    } else if (mode === 'Custom') {
+        modeText = 'Du hast \n' + score + ' Fragen von ' + total + ' Fragen \nrichtig beantwortet.';
+    } else {
+        modeText = 'Fehler, es wurde kein spiel erkannt.';
+    }
+
     const [fontsLoaded] = useFonts({
         'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
         'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
@@ -17,9 +36,7 @@ const EvaluationScreen = () => {
             <Text style={[styles.text, styles.headerText]}>Ergebnis</Text>
         </View>
 
-        <Text style={[styles.text, styles.h1]}>Du hast</Text>
-        <Text style={[styles.text, styles.h1]}>xx Fragen von xx Fragen</Text>
-        <Text style={[styles.text, styles.h1]}>richtig beantwortet</Text>
+        <Text style={[styles.text, styles.h1]}>{modeText}</Text>
 
         <View style={styles.divider}></View>
 
