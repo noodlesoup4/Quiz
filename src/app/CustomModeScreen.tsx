@@ -4,8 +4,9 @@ import { useRouter } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
 
 const CustomModeScreen: React.FC = () => {
-  const [questionCount, setQuestionCount] = useState<number | null>(null);
+  const [questionCount, setQuestionCount] = useState<number | null>(0);
   const [timer, setTimer] = useState<number | null>(null);
+  const [timerCheck, setTimerCheck] = useState<number | null>(0);
   const router = useRouter();
 
   const handleNext = () => {
@@ -18,7 +19,8 @@ const CustomModeScreen: React.FC = () => {
       pathname: '/CategorySelectionScreen', 
       params: {
         questionCount: questionCount,
-        timer: timer
+        timer: timer,
+        timerCheck: timerCheck
       }
     });
   };

@@ -21,7 +21,7 @@ export default function CategorySelectionScreen() {
   const [canContinue, setCanContinue] = useState(false); // State for continue button
   const [randomSelected, setRandomSelected] = useState(false);
   const router = useRouter();
-  const {mode, questionCount, timer} = useLocalSearchParams();
+  const {mode, questionCount, timer,timerCheck} = useLocalSearchParams();
 
 
   const handlePress = (index: number) => {
@@ -88,7 +88,7 @@ export default function CategorySelectionScreen() {
             }
             router.push({
               pathname: 'QuestionScreen',
-              params : {selectedCategories : JSON.stringify(selectedCategories),mode, questionCount, timer}
+              params : {selectedCategories : JSON.stringify(selectedCategories),mode, questionCount, timer,timerCheck}
             })
           } 
         }

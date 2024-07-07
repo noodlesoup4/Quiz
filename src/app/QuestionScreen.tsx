@@ -15,11 +15,12 @@ const QuestionScreen = () => {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const { selectedCategories, mode } = useLocalSearchParams();
+  const { selectedCategories, mode, questionCount, timer,timerCheck } = useLocalSearchParams();
   const [canContinue, setCanContinue] = useState(false);
   const [loading, setLoading] = useState(true);
   const [progressKey, setProgressKey] = useState(0); //state to manage progress key
-  const decrementOneSec = 15000;
+  const decrementOneSec = timer ? parseInt(timer[0]) * 1000 : 15000; // Dynamically decreases by one second depending which time has benn selected
+
 
   const [fontsLoaded] = useFonts({
     'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
@@ -28,11 +29,22 @@ const QuestionScreen = () => {
     'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
   });
 
+
+
   useEffect(() => {
     const fetchQuestions = () => {
       try {
+        
         const categoriesArray = JSON.parse(selectedCategories as string) as string[];
-        const questionData: Question[] = QuestionController.getQuestions(categoriesArray, 10);
+        let questionData: Question[] = QuestionController.getQuestions(categoriesArray, 15);
+        if(mode === 'Custom'){
+          const parsedQuestionCount = Array.isArray(questionCount)
+              ? parseInt(questionCount[0])
+              : parseInt(questionCount as string);
+              
+            questionData = QuestionController.getQuestions(categoriesArray,parsedQuestionCount);
+            
+        }
         setQuestions(questionData);
         setLoading(false);
       } catch (error) {
@@ -59,12 +71,12 @@ const QuestionScreen = () => {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
       setCanContinue(false);
-    } else if (selectedAnswer && mode === 'Survival') {
+    } else if (selectedAnswer && (mode === 'Survival' || mode === 'Custom')) {
       if (isCorrect) {
         setScore(score + 1);
         setProgressKey(prevKey=>prevKey+1); // Reset progress key to restart CircularProgress
       } else {
-        QuestionController.endQuiz(score,questions.length,'Survival');
+        QuestionController.endQuiz(score,questions.length,`${mode}`);
       }
 
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -75,8 +87,8 @@ const QuestionScreen = () => {
 
   useEffect(() => {
     const reachedEndOfQuiz = currentQuestionIndex >= questions.length && questions.length > 0;
-    if (reachedEndOfQuiz && mode === 'Normal') {
-      QuestionController.endQuiz(score,questions.length,'Normal');
+    if (reachedEndOfQuiz && (mode === 'Normal' || mode === 'Custom')) {
+      QuestionController.endQuiz(score,questions.length,`${mode}`);
     }
   }, [currentQuestionIndex, questions.length]);
 
@@ -86,28 +98,42 @@ const QuestionScreen = () => {
 
   const hasMoreQuestions = currentQuestionIndex < questions.length;
 
+
+  const parsedTimerCheck = Array.isArray(timerCheck)
+              ? parseInt(timerCheck[0])
+              : parseInt(timerCheck as string);
+
+  const parsedTimer = Array.isArray(timer)
+              ? parseInt(timer[0])
+              : parseInt(timer as string);
+
+  const renderTimer = () => {
+    const initialValue = mode === 'Custom' && parsedTimerCheck === 1 ? parsedTimer : 15;
+    const maxValue = mode === 'Custom' && parsedTimerCheck ? parsedTimer : 15;
+
  
   return (
     <SafeAreaView style={styles.container}>
-      {mode === 'Normal' && hasMoreQuestions && (
+      {mode !== 'Survival' && hasMoreQuestions && (
         <Text style={styles.text}>{currentQuestionIndex + 1}/{questions.length}</Text>
       )}
-      {mode === 'Survival' && hasMoreQuestions && (
+      {(mode === 'Survival' || (mode === 'Custom' && parsedTimerCheck === 1)) && hasMoreQuestions && (
       <View style = {styles.timer}>
+        {renderTimer()}
         <CircularProgress 
         key={progressKey} 
         value={0} 
-        initialValue={15} 
-        maxValue={15} 
+        initialValue={initialValue} 
+        maxValue={maxValue} 
         radius={40} 
         progressValueColor='black' 
         duration={decrementOneSec}
         strokeColorConfig={[
-          {color: 'green',value: 10}, 
-          {color: 'yellowgreen', value: 5},
-          {color: 'red',value: 3}
+          {color: 'green',value: initialValue * 2 / 3}, 
+          {color: 'yellowgreen', value: initialValue / 3},
+          {color: 'red',value: initialValue / 6}
         ]} 
-        onAnimationComplete={()=> QuestionController.endQuiz(score,questions.length,'Survival')} 
+        onAnimationComplete={()=> QuestionController.endQuiz(score,questions.length,`${mode}`)} 
         />
       </View>
       )}
@@ -150,6 +176,7 @@ const QuestionScreen = () => {
     </SafeAreaView>
   );
 };
+}
 
 const styles = StyleSheet.create({
   container: {
