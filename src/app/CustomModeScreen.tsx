@@ -112,87 +112,88 @@ const CustomModeScreen = () => {
 };
 
 
+
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      width: "100%",
-      alignItems: "center",
-      justifyContent: "space-between",
-      backgroundColor: "#EFF0F3"
-    },
-    divider:{
-      height: 1,
-      width: "90%",
-      backgroundColor: "lightgrey"
-    },
-    text: {
-      color: "#383838",
-      fontFamily: 'Lato-Regular',
-    },
-    header: {
-      backgroundColor: "#135D66",
-      width: "100%",
-      height: "20%",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    headerText: {
-      fontSize: 28,
-      color: "white",
-      fontFamily: 'Lato-Bold',
-    },
-    h1: {
-      fontSize: 22,
-      margin: -15,
-      fontFamily: 'Lato-Regular',
-    },
-    h2: {
-      fontSize: 18,
-      fontFamily: 'Lato-Regular',
-    },
-    h3: {
-      fontSize: 14,
-      margin: 5,
-      color: "#949494",
-      fontFamily: 'Lato-Regular',
-    },
-    completedButton: {
-      width: "90%",
-      backgroundColor: "#135D66",
-      marginVertical: 10,
-      padding: 15,
-      borderRadius: 10,
-      alignItems: "center"
-    },
-    buttonText: {
-      fontSize: 15,
-      color: "white",
-      fontFamily: 'Lato-Bold',
-    },
-    inputContainer: {
-      alignItems: "center",
-      width: "100%",
-    },
-    pickerContainer: {
-      width: "80%",
-      height: 50,
-      backgroundColor: "white",
-      borderRadius: 15,
-      overflow: 'hidden',
-      marginVertical: 20,
-    },
-    picker: {
-      width: "100%",
-      height: "100%",
-      color: "#383838", // Standardfarbe für reguläre Items
-      fontFamily: 'Lato-Regular',
-    },
-    pickerPlaceholder: {
-      width: "100%",
-      height: "100%",
-      color: "#949494", // Farbe für den Placeholder
-      fontFamily: 'Lato-Regular',
-    },
-  });
+  container: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "space-between",
+    backgroundColor: "#EFF0F3"
+  },
+  divider:{
+    height: 1,
+    width: "90%",
+    backgroundColor: "lightgrey"
+  },
+  text: {
+    color: "#383838",
+    fontFamily: 'Lato-Regular',
+  },
+  header: {
+    backgroundColor: "#135D66",
+    width: "100%",
+    height: "20%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  headerText: {
+    fontSize: 28,
+    color: "white",
+    fontFamily: 'Lato-Bold',
+  },
+  h1: {
+    fontSize: 22,
+    margin: -15,
+    fontFamily: 'Lato-Regular',
+  },
+  h2: {
+    fontSize: 18,
+    fontFamily: 'Lato-Regular',
+  },
+  h3: {
+    fontSize: 14,
+    margin: 5,
+    color: "#949494",
+    fontFamily: 'Lato-Regular',
+  },
+  completedButton: {
+    width: "90%",
+    backgroundColor: "#135D66",
+    marginVertical: 10,
+    padding: 15,
+    borderRadius: 10,
+    alignItems: "center"
+  },
+  buttonText: {
+    fontSize: 15,
+    color: "white",
+    fontFamily: 'Lato-Bold',
+  },
+  inputContainer: {
+    alignItems: "center",
+    width: "100%",
+  },
+  pickerContainer: {
+    width: "80%",
+    height: 50,
+    backgroundColor: "white",
+    borderRadius: 15,
+    overflow: 'hidden',
+    marginVertical: 20,
+  },
+  picker: {
+    width: "100%",
+    height: "100%",
+    color: "#383838", // Standardfarbe für reguläre Items
+    fontFamily: 'Lato-Regular',
+  },
+  pickerPlaceholder: {
+    width: "100%",
+    height: "100%",
+    color: "#949494", // Farbe für den Placeholder
+    fontFamily: 'Lato-Regular',
+  },
+});
 
 export default CustomModeScreen;

@@ -15,7 +15,7 @@ const QuestionScreen = () => {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const { selectedCategories, mode, questionCount, timer,timerCheck } = useLocalSearchParams();
+  const { selectedCategories, mode, questionCount, timer,timerSet } = useLocalSearchParams();
   const [canContinue, setCanContinue] = useState(false);
   const [loading, setLoading] = useState(true);
   const [progressKey, setProgressKey] = useState(0); //state to manage progress key
@@ -38,6 +38,7 @@ const QuestionScreen = () => {
         const categoriesArray = JSON.parse(selectedCategories as string) as string[];
         let questionData: Question[] = QuestionController.getQuestions(categoriesArray, 15);
         if(mode === 'Custom'){
+          console.log("custom mode");
           const parsedQuestionCount = Array.isArray(questionCount)
               ? parseInt(questionCount[0])
               : parseInt(questionCount as string);
@@ -48,12 +49,13 @@ const QuestionScreen = () => {
         setQuestions(questionData);
         setLoading(false);
       } catch (error) {
+        setLoading(false)
         console.error('Error fetching questions:', error);
       }
     };
 
     fetchQuestions();
-  }, [selectedCategories]);
+  }, [selectedCategories,mode,questionCount]);
 
   
 
@@ -90,7 +92,7 @@ const QuestionScreen = () => {
     if (reachedEndOfQuiz && (mode === 'Normal' || mode === 'Custom')) {
       QuestionController.endQuiz(score,questions.length,`${mode}`);
     }
-  }, [currentQuestionIndex, questions.length]);
+  }, [currentQuestionIndex, questions.length,score,mode]);
 
   if (!fontsLoaded || loading) {
     return <View />;
@@ -99,50 +101,52 @@ const QuestionScreen = () => {
   const hasMoreQuestions = currentQuestionIndex < questions.length;
 
 
-  const parsedTimerCheck = Array.isArray(timerCheck)
-              ? parseInt(timerCheck[0])
-              : parseInt(timerCheck as string);
+  
 
   const parsedTimer = Array.isArray(timer)
               ? parseInt(timer[0])
               : parseInt(timer as string);
 
   const renderTimer = () => {
-    const initialValue = mode === 'Custom' && parsedTimerCheck === 1 ? parsedTimer : 15;
-    const maxValue = mode === 'Custom' && parsedTimerCheck ? parsedTimer : 15;
+    const initialValue = mode === 'Custom' && timerSet === 'true' ? parsedTimer : 15;
+    const maxValue = mode === 'Custom' && timerSet === 'true' ? parsedTimer : 15;
 
  
+    return (
+      <CircularProgress
+        key={progressKey}
+        value={0}
+        initialValue={initialValue}
+        maxValue={maxValue}
+        radius={40}
+        progressValueColor='black'
+        duration={decrementOneSec}
+        strokeColorConfig={[
+          { color: 'green', value: initialValue * 2 / 3 },
+          { color: 'yellowgreen', value: initialValue / 3 },
+          { color: 'red', value: initialValue / 6 }
+        ]}
+        onAnimationComplete={() => QuestionController.endQuiz(score, questions.length, `${mode}`)}
+      />
+    );
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       {mode !== 'Survival' && hasMoreQuestions && (
         <Text style={styles.text}>{currentQuestionIndex + 1}/{questions.length}</Text>
       )}
-      {(mode === 'Survival' || (mode === 'Custom' && parsedTimerCheck === 1)) && hasMoreQuestions && (
-      <View style = {styles.timer}>
-        {renderTimer()}
-        <CircularProgress 
-        key={progressKey} 
-        value={0} 
-        initialValue={initialValue} 
-        maxValue={maxValue} 
-        radius={40} 
-        progressValueColor='black' 
-        duration={decrementOneSec}
-        strokeColorConfig={[
-          {color: 'green',value: initialValue * 2 / 3}, 
-          {color: 'yellowgreen', value: initialValue / 3},
-          {color: 'red',value: initialValue / 6}
-        ]} 
-        onAnimationComplete={()=> QuestionController.endQuiz(score,questions.length,`${mode}`)} 
-        />
-      </View>
+      {(mode === 'Survival' || (mode === 'Custom' && timerSet === 'true')) && hasMoreQuestions && (
+        <View style={styles.timer}>
+          {renderTimer()}
+        </View>
       )}
       {hasMoreQuestions ? (
         <>
-          <QuestionComponent question={questions[currentQuestionIndex].question} />
+          <QuestionComponent question={questions[currentQuestionIndex]?.question} />
           <View style={styles.answers}>
-            {questions[currentQuestionIndex].answers.map((answer, index) => {
-              const isCorrect = answer === questions[currentQuestionIndex].correctAnswer;
+            {questions[currentQuestionIndex]?.answers.map((answer, index) => {
+              const isCorrect = answer === questions[currentQuestionIndex]?.correctAnswer;
               const isSelected = answer === selectedAnswer;
               let buttonStyle = styles.button;
 
@@ -171,12 +175,12 @@ const QuestionScreen = () => {
         </>
       ) : (
         <View>
+          <Text>No more questions available.</Text>
         </View>
       )}
     </SafeAreaView>
   );
 };
-}
 
 const styles = StyleSheet.create({
   container: {
