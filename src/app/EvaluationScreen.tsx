@@ -13,13 +13,13 @@ const EvaluationScreen = () => {
 
     let modeText;
     if (mode === 'Normal') {
-        modeText = 'Du hast \n' + score + ' Fragen von ' + total + ' Fragen \nrichtig beantwortet.';
+        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen von {total} Fragen {'\n'} richtig beantwortet.</Text>);
     } else if (mode === 'Survival') {
-        modeText = 'Du hast \n' + score + ' Fragen Überlebt.';
+        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen Überlebt.</Text>);
     } else if (mode === 'Custom') {
-        modeText = 'Du hast \n' + score + ' Fragen von ' + total + ' Fragen \nrichtig beantwortet.';
+        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen von {total} Fragen {'\n'} richtig beantwortet.</Text>);
     } else {
-        modeText = 'Fehler, es wurde kein spiel erkannt.';
+        modeText = (<Text style={[styles.text, styles.h1]}>Fehler, es wurde kein spiel erkannt.</Text>);
     }
 
     const [fontsLoaded] = useFonts({
@@ -36,7 +36,7 @@ const EvaluationScreen = () => {
             <Text style={[styles.text, styles.headerText]}>Ergebnis</Text>
         </View>
 
-        <Text style={[styles.text, styles.h1]}>{modeText}</Text>
+        {modeText}
 
         <View style={styles.divider}></View>
 
