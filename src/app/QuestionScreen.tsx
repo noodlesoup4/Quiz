@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#EFF0F3',
   },
   text: {
     fontSize: 24,
@@ -177,14 +177,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     padding: 10,
     borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#000',
   },
   correctAnswer: {
-    backgroundColor: 'green',
+    backgroundColor: '#77B0AA',
   },
   wrongAnswer: {
-    backgroundColor: 'red',
+    backgroundColor: '#F28C8C',
   },
   readyButtonContainer: {
     position: 'absolute',
