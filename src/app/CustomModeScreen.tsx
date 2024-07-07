@@ -1,8 +1,15 @@
-import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient';
+import { useFonts } from 'expo-font';
 
 const CustomModeScreen = () => {
+    const [fontsLoaded] = useFonts({
+        'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+        'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+        'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+      });
+
   return (
     
     <View style={styles.container}>
