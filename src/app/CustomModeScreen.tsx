@@ -2,35 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Alert, Switch } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
-import * as SplashScreen from 'expo-splash-screen';
-import * as Font from 'expo-font';
 
-SplashScreen.preventAutoHideAsync();
 
-const loadFonts = () => {
-  return Font.loadAsync({
-    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
-    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-  });
-};
 
-const CustomModeScreen: React.FC = () => {
+
+const CustomModeScreen = () => {
   const [questionCount, setQuestionCount] = useState<number | null>(0);
   const [timer, setTimer] = useState<number | null>(null);
-  const [timerCheck, setTimerCheck] = useState<number | null>(0);
-  const [fontsLoaded, setFontsLoaded] = useState(false);
-  const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(true);
+  const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(false);
   const router = useRouter();
-
-  useEffect(() => {
-    const loadResources = async () => {
-      await loadFonts();
-      setFontsLoaded(true);
-      await SplashScreen.hideAsync();
-    };
-
-    loadResources();
-  }, []);
 
   const handleNext = () => {
     if (questionCount === null || (isTimerEnabled && timer === null)) {
@@ -42,9 +22,8 @@ const CustomModeScreen: React.FC = () => {
       pathname: '/CategorySelectionScreen',
       params: {
         questionCount: questionCount,
-        //timer: timer,
-        timerCheck: timerCheck,
-        timer: isTimerEnabled ? timer : null,
+        timer: timer,
+        timerSet: isTimerEnabled.toString()
       }
     });
   };
@@ -56,10 +35,6 @@ const CustomModeScreen: React.FC = () => {
     }
     return options;
   };
-
-  if (!fontsLoaded) {
-    return null; 
-  }
 
   const isButtonDisabled = questionCount === null || (isTimerEnabled && timer === null);
 
@@ -136,87 +111,88 @@ const CustomModeScreen: React.FC = () => {
   );
 };
 
-export default CustomModeScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: "100%",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#EFF0F3"
-  },
-  divider:{
-    height: 1,
-    width: "90%",
-    backgroundColor: "lightgrey"
-  },
-  text: {
-    color: "#383838",
-    fontFamily: 'Lato-Regular',
-  },
-  header: {
-    backgroundColor: "#135D66",
-    width: "100%",
-    height: "20%",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  headerText: {
-    fontSize: 28,
-    color: "white",
-    fontFamily: 'Lato-Bold',
-  },
-  h1: {
-    fontSize: 22,
-    margin: -15,
-    fontFamily: 'Lato-Regular',
-  },
-  h2: {
-    fontSize: 18,
-    fontFamily: 'Lato-Regular',
-  },
-  h3: {
-    fontSize: 14,
-    margin: 5,
-    color: "#949494",
-    fontFamily: 'Lato-Regular',
-  },
-  completedButton: {
-    width: "90%",
-    backgroundColor: "#135D66",
-    marginVertical: 10,
-    padding: 15,
-    borderRadius: 10,
-    alignItems: "center"
-  },
-  buttonText: {
-    fontSize: 15,
-    color: "white",
-    fontFamily: 'Lato-Bold',
-  },
-  inputContainer: {
-    alignItems: "center",
-    width: "100%",
-  },
-  pickerContainer: {
-    width: "80%",
-    height: 50,
-    backgroundColor: "white",
-    borderRadius: 15,
-    overflow: 'hidden',
-    marginVertical: 20,
-  },
-  picker: {
-    width: "100%",
-    height: "100%",
-    color: "#383838", // Standardfarbe für reguläre Items
-    fontFamily: 'Lato-Regular',
-  },
-  pickerPlaceholder: {
-    width: "100%",
-    height: "100%",
-    color: "#949494", // Farbe für den Placeholder
-    fontFamily: 'Lato-Regular',
-  },
-});
+    container: {
+      flex: 1,
+      width: "100%",
+      alignItems: "center",
+      justifyContent: "space-between",
+      backgroundColor: "#EFF0F3"
+    },
+    divider:{
+      height: 1,
+      width: "90%",
+      backgroundColor: "lightgrey"
+    },
+    text: {
+      color: "#383838",
+      fontFamily: 'Lato-Regular',
+    },
+    header: {
+      backgroundColor: "#135D66",
+      width: "100%",
+      height: "20%",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    headerText: {
+      fontSize: 28,
+      color: "white",
+      fontFamily: 'Lato-Bold',
+    },
+    h1: {
+      fontSize: 22,
+      margin: -15,
+      fontFamily: 'Lato-Regular',
+    },
+    h2: {
+      fontSize: 18,
+      fontFamily: 'Lato-Regular',
+    },
+    h3: {
+      fontSize: 14,
+      margin: 5,
+      color: "#949494",
+      fontFamily: 'Lato-Regular',
+    },
+    completedButton: {
+      width: "90%",
+      backgroundColor: "#135D66",
+      marginVertical: 10,
+      padding: 15,
+      borderRadius: 10,
+      alignItems: "center"
+    },
+    buttonText: {
+      fontSize: 15,
+      color: "white",
+      fontFamily: 'Lato-Bold',
+    },
+    inputContainer: {
+      alignItems: "center",
+      width: "100%",
+    },
+    pickerContainer: {
+      width: "80%",
+      height: 50,
+      backgroundColor: "white",
+      borderRadius: 15,
+      overflow: 'hidden',
+      marginVertical: 20,
+    },
+    picker: {
+      width: "100%",
+      height: "100%",
+      color: "#383838", // Standardfarbe für reguläre Items
+      fontFamily: 'Lato-Regular',
+    },
+    pickerPlaceholder: {
+      width: "100%",
+      height: "100%",
+      color: "#949494", // Farbe für den Placeholder
+      fontFamily: 'Lato-Regular',
+    },
+  });
+
+export default CustomModeScreen;
