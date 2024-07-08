@@ -119,8 +119,6 @@ export default function CategorySelectionScreen() {
               isTimerEnabled: isTimerEnabled,
             },
           });
-          //console.log(typeof isTimerEnabled);
-          //console.log(mode, typeof mode);
         }}
       >
         <Text style={styles.continueButtonText}>Weiter</Text>
@@ -165,16 +163,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#77B0AA',
   },
   buttonText: {
-    fontFamily: "Lato-Regular",
     fontSize: 18,
     color: 'teal',
     marginTop: 10,
+    fontFamily: "Lato-Regular"
   },
   continueButton: {
     marginTop: 50,
     width: '80%',
     backgroundColor: '#135D66',
-    marginVertical: 10,
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -182,5 +179,6 @@ const styles = StyleSheet.create({
   continueButtonText: {
     fontSize: 18,
     color: 'white',
+    fontFamily: "Lato-Bold"
   },
 });
