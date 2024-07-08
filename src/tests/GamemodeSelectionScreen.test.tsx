@@ -24,7 +24,7 @@ describe('GamemodeSelectionScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('should render correctly', () => {
+  it('render correctly', () => {
     const { getByText } = render(<GamemodeSelectionScreen />);
 
     expect(getByText('Spielmodus')).toBeTruthy();
@@ -34,7 +34,7 @@ describe('GamemodeSelectionScreen', () => {
     expect(getByText('Custom')).toBeTruthy();
   });
 
-  it('should navigate to CategorySelectionScreen with Normal mode', () => {
+  it('navigate to CategorySelectionScreen with Normal mode', () => {
     const { getByText } = render(<GamemodeSelectionScreen />);
 
     fireEvent.press(getByText('Normal'));
@@ -45,7 +45,7 @@ describe('GamemodeSelectionScreen', () => {
     });
   });
 
-  it('should navigate to CategorySelectionScreen with Survival mode', () => {
+  it('navigate to CategorySelectionScreen with Survival mode', () => {
     const { getByText } = render(<GamemodeSelectionScreen />);
 
     fireEvent.press(getByText('Survival'));
@@ -56,7 +56,7 @@ describe('GamemodeSelectionScreen', () => {
     });
   });
 
-  it('should navigate to CustomModeScreen with Custom mode', () => {
+  it('navigate to CustomModeScreen with Custom mode', () => {
     const { getByText } = render(<GamemodeSelectionScreen />);
 
     fireEvent.press(getByText('Custom'));

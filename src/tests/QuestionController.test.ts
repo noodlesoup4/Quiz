@@ -25,7 +25,7 @@ describe('QuestionController', () => {
   });
 
   describe('readQuestions', () => {
-    test('should read questions from specified categories and shuffle them', () => {
+    test('read questions from specified categories and shuffle them', () => {
       const categories = ['chemie', 'geographie'];
       const questions = QuestionController['readQuestions'](categories);
       
@@ -33,7 +33,7 @@ describe('QuestionController', () => {
       expect(_.shuffle).toHaveBeenCalledWith([...chemistryQuestions, ...geographyQuestions]);
     });
 
-    test('should return an empty array if no categories match', () => {
+    test('return an empty array if no categories match', () => {
       const categories = ['nonexistent'];
       const questions = QuestionController['readQuestions'](categories);
       
@@ -41,7 +41,7 @@ describe('QuestionController', () => {
       expect(_.shuffle).toHaveBeenCalledWith([]);
     });
 
-    test('should handle categories with no questions gracefully', () => {
+    test('handle categories with no questions gracefully', () => {
       const categories = ['chemie', 'emptyCategory'];
       const questions = QuestionController['readQuestions'](categories);
       
@@ -60,7 +60,7 @@ describe('QuestionController', () => {
       expect(questions).toEqual([...chemistryQuestions, ...geographyQuestions].slice(0, amount));
     });
 
-    test('should return all available questions if amount is larger than available questions', () => {
+    test('return all available questions if amount is larger than available questions', () => {
       const categories = ['chemie'];
       const amount = 100;
       const questions = QuestionController.getQuestions(categories, amount);
@@ -68,7 +68,7 @@ describe('QuestionController', () => {
       expect(questions).toEqual(chemistryQuestions);
     });
 
-    test('should return an empty array if no categories are provided', () => {
+    test('return an empty array if no categories are provided', () => {
       const categories: string[] = [];
       const amount = 10;
       const questions = QuestionController.getQuestions(categories, amount);
@@ -76,7 +76,7 @@ describe('QuestionController', () => {
       expect(questions).toEqual([]);
     });
 
-    test('should handle case where amount is zero', () => {
+    test('handle case where amount is zero', () => {
       const categories = ['chemie', 'geographie'];
       const amount = 0;
       const questions = QuestionController.getQuestions(categories, amount);
@@ -84,7 +84,7 @@ describe('QuestionController', () => {
       expect(questions).toEqual([]);
     });
 
-    test('should handle case where categories include nonexistent ones', () => {
+    test('handle case where categories include nonexistent ones', () => {
       const categories = ['chemie', 'nonexistent'];
       const amount = 3;
       const questions = QuestionController.getQuestions(categories, amount);
@@ -95,7 +95,7 @@ describe('QuestionController', () => {
   });
 
   describe('endQuiz', () => {
-    test('should navigate to EvaluationScreen with correct parameters', () => {
+    test('navigate to EvaluationScreen with correct parameters', () => {
       const score = 10;
       const total = 20;
       const mode = 'Normal';
@@ -108,7 +108,7 @@ describe('QuestionController', () => {
       });
     });
 
-    test('should handle edge case where score is negative', () => {
+    test('handle edge case where score is negative', () => {
       const score = -5;
       const total = 20;
       const mode = 'Normal';
@@ -121,7 +121,7 @@ describe('QuestionController', () => {
       });
     });
 
-    test('should handle edge case where total is zero', () => {
+    test('handle edge case where total is zero', () => {
       const score = 10;
       const total = 0;
       const mode = 'Normal';
@@ -134,7 +134,7 @@ describe('QuestionController', () => {
       });
     });
 
-    test('should handle edge case where mode is an invalid string', () => {
+    test('handle edge case where mode is an invalid string', () => {
       const score = 10;
       const total = 20;
       const mode = 'invalid';
