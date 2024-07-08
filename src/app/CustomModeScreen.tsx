@@ -90,7 +90,7 @@ const CustomModeScreen = () => {
               onValueChange={(value) => {
                 setIsTimerEnabled(value);
                 if (!value) {
-                  setTimer(null); // Reset timer if switch is turned off
+                  setTimer(null); 
                 }
               }}
             />

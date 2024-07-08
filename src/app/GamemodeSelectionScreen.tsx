@@ -6,7 +6,6 @@ import { router } from 'expo-router'
 import { midnightTeal, paleMist, white } from '../model/Colors'
 import { useFonts } from 'expo-font'
 
-
 const GamemodeSelectionScreen = () => {
   const [fontsLoaded] = useFonts({
     'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
@@ -15,20 +14,15 @@ const GamemodeSelectionScreen = () => {
     'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
   });
 
-
   const custom = 'Custom';
   const normal = 'Normal';
    const survival = 'Survival';
-  //When a mode is selected on GamemodeSelectionScreen, 
-  //store this information so it can be accessed on QuestionScreen.
+
   const handleModeSelection = (mode: string) => {
     if(mode === custom) {
-      //console.log("Clicked custom");
       router.push({pathname: './CustomModeScreen',params: { mode: mode }})
-      //console.log(mode)
     }
     else{
-      //console.log("Jungge bruder");
       router.push({ pathname: './CategorySelectionScreen', params: { mode } });
     }
     

@@ -37,10 +37,6 @@ export default function CategorySelectionScreen() {
   const isTimerEnabled: string = params.isTimerEnabled as string;
 
   useEffect(() => {
-    //console.log("Mode:", mode);
-    //console.log("Question Count:", questionCount);
-    //console.log("Timer:", timer);
-    //console.log("Is Timer Enabled:", isTimerEnabled);
   }, [mode, questionCount, timer, isTimerEnabled]);
 
   const handlePress = (index: number) => {
