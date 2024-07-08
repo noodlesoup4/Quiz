@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react-native';
 import CustomModeScreen from '../app/CustomModeScreen';
 import { router } from 'expo-router';
 import { Alert } from 'react-native';
+import '@testing-library/jest-dom';
 
 jest.mock('expo-router', () => ({
   router: {

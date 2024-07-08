@@ -6,14 +6,14 @@ import { useLocalSearchParams, useRouter } from 'expo-router';
 import { midnightTeal, paleMist, white } from '../model/Colors';
 
 const categories = [
-  { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" /> },
-  { name: 'Physik', icon: <FontAwesome name="calculator" size={24} color="teal" /> },
-  { name: 'Politik', icon: <FontAwesome name="university" size={24} color="teal" /> },
-  { name: 'Geschichte', icon: <FontAwesome name="book" size={24} color="teal" /> },
-  { name: 'Geographie', icon: <FontAwesome5 name="globe" size={24} color="teal" /> },
-  { name: 'Natur', icon: <FontAwesome5 name="paw" size={24} color="teal" /> },
-  { name: 'Religion', icon: <FontAwesome6 name="book-bible" size={24} color="teal" /> },
-  { name: 'Zufällig', icon: <FontAwesome name="question" size={24} color="teal" /> },
+  { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" />, testID: 'chemie-button' },
+  { name: 'Physik', icon: <FontAwesome name="calculator" size={24} color="teal" />, testID: 'physik-button' },
+  { name: 'Politik', icon: <FontAwesome name="university" size={24} color="teal" />, testID: 'politik-button' },
+  { name: 'Geschichte', icon: <FontAwesome name="book" size={24} color="teal" />, testID: 'geschichte-button' },
+  { name: 'Geographie', icon: <FontAwesome5 name="globe" size={24} color="teal" />, testID: 'geographie-button' },
+  { name: 'Natur', icon: <FontAwesome5 name="paw" size={24} color="teal" />, testID: 'natur-button' },
+  { name: 'Religion', icon: <FontAwesome6 name="book-bible" size={24} color="teal" />, testID: 'religion-button' },
+  { name: 'Zufällig', icon: <FontAwesome name="question" size={24} color="teal" />, testID: 'random-button' },
 ];
 
 export default function CategorySelectionScreen() {
@@ -73,6 +73,7 @@ export default function CategorySelectionScreen() {
         {categories.map((category, index) => (
           <TouchableOpacity
             key={index}
+            testID={category.testID}
             style={[
               styles.button,
               selectedIndexes.includes(index) && styles.selectedButton,
