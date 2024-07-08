@@ -22,7 +22,7 @@ describe('EvaluationScreen', () => {
     jest.clearAllMocks();
   });
 
-  it('should display the correct message for Normal mode with plural questions', () => {
+  it('display the correct message for Normal mode with plural questions', () => {
     const params = {
       score: '8',
       total: '10',
@@ -37,7 +37,7 @@ describe('EvaluationScreen', () => {
     expect(getByText('richtig beantwortet.')).toBeTruthy();
   });
 
-  it('should display the correct message for Normal mode with singular question', () => {
+  it('display the correct message for Normal mode with singular question', () => {
     const params = {
       score: '1',
       total: '1',
@@ -52,7 +52,7 @@ describe('EvaluationScreen', () => {
     expect(getByText('richtig beantwortet.')).toBeTruthy();
   });
 
-  it('should display the correct message for Survival mode', () => {
+  it('display the correct message for Survival mode', () => {
     const params = {
       score: '5',
       mode: 'Survival'
@@ -65,7 +65,7 @@ describe('EvaluationScreen', () => {
     expect(getByText('5 Fragen überlebt.')).toBeTruthy();
   });
 
-  it('should display the correct message for Custom mode', () => {
+  it('display the correct message for Custom mode', () => {
     const params = {
       score: '7',
       total: '10',
@@ -80,7 +80,7 @@ describe('EvaluationScreen', () => {
     expect(getByText('richtig beantwortet.')).toBeTruthy();
   });
 
-  it('should display error message for unknown mode', () => {
+  it('display error message for unknown mode', () => {
     const params = {
       score: '5',
       total: '10',
@@ -93,7 +93,7 @@ describe('EvaluationScreen', () => {
     expect(getByText('Fehler, es wurde kein spiel erkannt.')).toBeTruthy();
   });
 
-  it('should navigate to GamemodeSelectionScreen on button press', () => {
+  it('navigate to GamemodeSelectionScreen on button press', () => {
     const params = {
       score: '8',
       total: '10',
