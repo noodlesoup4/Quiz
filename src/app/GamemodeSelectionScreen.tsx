@@ -14,12 +14,12 @@ const GamemodeSelectionScreen = () => {
   //store this information so it can be accessed on QuestionScreen.
   const handleModeSelection = (mode: string) => {
     if(mode === custom) {
-      console.log("Clicked custom");
+      //console.log("Clicked custom");
       router.push({pathname: './CustomModeScreen',params: { mode: mode }})
-      console.log(mode)
+      //console.log(mode)
     }
     else{
-      console.log("Jungge bruder");
+      //console.log("Jungge bruder");
       router.push({ pathname: './CategorySelectionScreen', params: { mode } });
     }
     

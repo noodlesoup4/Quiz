@@ -28,7 +28,7 @@ const CustomModeScreen = () => {
         isTimerEnabled: isTimerEnabled.toString()
       }
     });
-    console.log(isTimerEnabled);
+    //console.log(isTimerEnabled);
   };
 
   const generateOptions = (min: number, max: number, step: number) => {

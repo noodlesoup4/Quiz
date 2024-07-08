@@ -1,44 +1,66 @@
-import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { useFonts } from 'expo-font'
+import { KeyboardAvoidingView, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { useFonts } from 'expo-font';
 import { router, useLocalSearchParams } from 'expo-router';
 
 const EvaluationScreen = () => {
+  const params = useLocalSearchParams();
 
-    const params = useLocalSearchParams();
-  
-    const score = Array.isArray(params.score) ? parseFloat(params.score[0]) : parseFloat(params.score || '0');
-    const total = Array.isArray(params.total) ? parseFloat(params.total[0]) : parseFloat(params.total || '0');
-    const mode = Array.isArray(params.mode) ? params.mode[0] : params.mode || 'unknown';
+  const score = Array.isArray(params.score) ? parseFloat(params.score[0]) : parseFloat(params.score || '0');
+  const total = Array.isArray(params.total) ? parseFloat(params.total[0]) : parseFloat(params.total || '0');
+  const mode = Array.isArray(params.mode) ? params.mode[0] : params.mode || 'unknown';
 
-    let modeText;
-    if (mode === 'Normal') {
-        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen von {total} Fragen {'\n'} richtig beantwortet.</Text>);
-    } else if (mode === 'Survival') {
-        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen Überlebt.</Text>);
-    } else if (mode === 'Custom') {
-        modeText = (<Text style={[styles.text, styles.h1]}>Du hast {'\n'} {score} Fragen von {total} Fragen {'\n'} richtig beantwortet.</Text>);
-    } else {
-        modeText = (<Text style={[styles.text, styles.h1]}>Fehler, es wurde kein spiel erkannt.</Text>);
-    }
+  let modeText;
+  if (mode === 'Normal') {
+    modeText = (
+      <View style={styles.modeTextContainer}>
+        <Text style={[styles.text, styles.h1]}>Du hast</Text>
+        <Text style={[styles.text, styles.h1]}>{score} {score === 1 ? 'Frage' : 'Fragen'} von {total} {total === 1 ? 'Frage' : 'Fragen'}</Text>
+        <Text style={[styles.text, styles.h1]}>richtig beantwortet.</Text>
+      </View>
+    );
+  } else if (mode === 'Survival') {
+    modeText = (
+      <View style={styles.modeTextContainer}>
+        <Text style={[styles.text, styles.h1]}>Du hast</Text>
+        <Text style={[styles.text, styles.h1]}>{score} {score === 1 ? 'Frage' : 'Fragen'} überlebt.</Text>
+      </View>
+    );
+  } else if (mode === 'Custom') {
+    modeText = (
+      <View style={styles.modeTextContainer}>
+        <Text style={[styles.text, styles.h1]}>Du hast</Text>
+        <Text style={[styles.text, styles.h1]}>{score} {score === 1 ? 'Frage' : 'Fragen'} von {total} {total === 1 ? 'Frage' : 'Fragen'}</Text>
+        <Text style={[styles.text, styles.h1]}>richtig beantwortet.</Text>
+      </View>
+    );
+  } else {
+    modeText = (
+      <View style={styles.modeTextContainer}>
+        <Text style={[styles.text, styles.h1]}>Fehler, es wurde kein spiel erkannt.</Text>
+      </View>
+    );
+  }
 
-    const [fontsLoaded] = useFonts({
-        'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
-        'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
-        'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
-        'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
-      });
+  const [fontsLoaded] = useFonts({
+    'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
         <View style={styles.header}>
             <Text style={[styles.text, styles.headerText]}>Ergebnis</Text>
         </View>
 
         {modeText}
-
-        <View style={styles.divider}></View>
 
         {/*<TouchableOpacity onPress={() => router.push({
               pathname: 'QuestionScreen',
@@ -54,7 +76,7 @@ const EvaluationScreen = () => {
             <Text style={[styles.text, styles.buttonText]}>Neues Spiel starten</Text>
         </TouchableOpacity>
         
-    </View>
+    </SafeAreaView>
   )
 }
 
@@ -66,16 +88,14 @@ const styles = StyleSheet.create({
         width: "100%",
         alignItems: "center",
         justifyContent: "space-between",
-        backgroundColor: "#EFF0F3"
-    },
-    divider:{
-        height: 1,
-        width: "90%",
-        backgroundColor: "lightgrey"
+        backgroundColor: "#EFF0F3",
     },
     text: {
         fontFamily: "Lato-Bold",
-        color: "#383838"
+        color: "#383838",
+        textAlign: "center",
+        marginVertical: 5,
+        zIndex: 1,
     },
     header: {
         backgroundColor: "#135D66",
@@ -87,10 +107,15 @@ const styles = StyleSheet.create({
     headerText: {
         fontSize: 28,
         color: "white",
+        zIndex: 1,
     },
     h1: {
         fontSize: 22,
         margin: -15,
+        alignItems: "center",
+        justifyContent: "center",
+        paddingVertical: 5,
+        zIndex: 1,
     },
     h2: {
         fontSize: 18,
@@ -126,6 +151,14 @@ const styles = StyleSheet.create({
     inputContainer: {
         alignItems: "center",
         width: "100%",
-
-    }
-})
+    },
+    modeTextContainer: {
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+        marginBottom: 20,
+        //borderWidth: 1,
+        //borderColor: 'red',
+    },
+});

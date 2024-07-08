@@ -25,7 +25,7 @@ const QuestionScreen = () => {
 
  
 
-  console.log('Initial timerSet:', isTimerEnabled); // 1. Initial value at the beginning of the component
+  //console.log('Initial timerSet:', isTimerEnabled); // 1. Initial value at the beginning of the component
 
 
   const [fontsLoaded] = useFonts({
@@ -45,7 +45,7 @@ const QuestionScreen = () => {
         const categoriesArray = JSON.parse(selectedCategories as string) as string[];
         let questionData: Question[] = [];
         if(mode === 'Custom'){
-          console.log('In custom');
+          //console.log('In custom');
           const parsedQuestionCount = Array.isArray(questionCount)
               ? parseInt(questionCount[0])
               : parseInt(questionCount as string);

@@ -54,7 +54,7 @@ describe('QuestionController', () => {
 
     test('should return all available questions if amount is larger than available questions', () => {
       const categories = ['chemie'];
-      const amount = 1000;
+      const amount = 100;
       const questions = QuestionController.getQuestions(categories, amount);
       
       expect(questions).toEqual(chemistryQuestions);
