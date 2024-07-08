@@ -39,7 +39,7 @@ const CustomModeScreen = () => {
     return options;
   };
 
-  const isButtonDisabled = questionCount === null || (isTimerEnabled && timer === null);
+  const isButtonDisabled = questionCount === 0 || (isTimerEnabled && timer === null);
 
   return (
     <View style={styles.container}>
@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
     color: "#949494",
   },
   completedButton: {
+    bottom: '4%',
     width: "90%",
     backgroundColor: "#135D66",
     marginVertical: 10,
