@@ -4,9 +4,18 @@ import { LinearGradient } from 'expo-linear-gradient'
 import CustomButtonComponent from '../components/Rectangle'
 import { router } from 'expo-router'
 import { midnightTeal, paleMist, white } from '../model/Colors'
+import { useFonts } from 'expo-font'
 
 
 const GamemodeSelectionScreen = () => {
+  const [fontsLoaded] = useFonts({
+    'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+  });
+
+
   const custom = 'Custom';
   const normal = 'Normal';
    const survival = 'Survival';
@@ -25,7 +34,9 @@ const GamemodeSelectionScreen = () => {
     
   };
   
-  
+  if (!fontsLoaded) {
+    return null;
+  }
  
   return (
    <View style={styles.container}>
@@ -79,12 +90,14 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     color: white,
+    fontFamily: "Lato-Bold"
   },
   button: {
     width: "80%",
     margin: 30,
   },
   buttonText: {
+    fontFamily: "Lato-Bold",
     fontSize: 24,
     color: 'teal',
   },

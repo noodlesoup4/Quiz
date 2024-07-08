@@ -4,6 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { FontAwesome5, FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { midnightTeal, paleMist, white } from '../model/Colors';
+import { useFonts } from 'expo-font';
 
 const categories = [
   { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" />, testID: 'chemie-button' },
@@ -17,6 +18,13 @@ const categories = [
 ];
 
 export default function CategorySelectionScreen() {
+  const [fontsLoaded] = useFonts({
+    'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+  });
+
   const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
   const [canContinue, setCanContinue] = useState(false);
   const [randomSelected, setRandomSelected] = useState(false);
@@ -59,6 +67,10 @@ export default function CategorySelectionScreen() {
       setCanContinue(newSelectedIndexes.length > 0);
     }
   };
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <LinearGradient
@@ -126,6 +138,7 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 24,
     color: 'white',
+    fontFamily: "Lato-Bold"
   },
   headerContainer: {
     position: 'absolute',
@@ -152,6 +165,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#77B0AA',
   },
   buttonText: {
+    fontFamily: "Lato-Regular",
     fontSize: 18,
     color: 'teal',
     marginTop: 10,

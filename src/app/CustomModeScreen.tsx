@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Alert, Switch } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
-
-
-
+import { useFonts } from 'expo-font';
 
 const CustomModeScreen = () => {
+  const [fontsLoaded] = useFonts({
+    'Lato-Black': require('../assets/fonts/Lato-Black.ttf'),
+    'Lato-Bold': require('../assets/fonts/Lato-Bold.ttf'),
+    'Lato-Light': require('../assets/fonts/Lato-Light.ttf'),
+    'Lato-Regular': require('../assets/fonts/Lato-Regular.ttf'),
+  });
+
   const [questionCount, setQuestionCount] = useState<number | null>(0);
   const [timer, setTimer] = useState<number | null>(null);
   const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(false);
@@ -41,6 +46,10 @@ const CustomModeScreen = () => {
 
   const isButtonDisabled = questionCount === 0 || (isTimerEnabled && timer === null);
 
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -73,7 +82,7 @@ const CustomModeScreen = () => {
       
       <View style={styles.inputContainer}>
         <Text style={[styles.text, styles.h2]}>Timer</Text>
-        <Text>Timer aktiviert survival mode!</Text>
+        <Text style={[styles.text, styles.h3]}>der Timer aktiviert den Survival Modus</Text>
         <Switch
           value={isTimerEnabled}
           onValueChange={(value) => {
@@ -132,6 +141,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#383838",
+    fontFamily: "Lato-Bold",
   },
   header: {
     backgroundColor: "#135D66",
@@ -155,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     margin: 5,
     color: "#949494",
+    fontFamily: "Lato-Regular",
   },
   completedButton: {
     bottom: '4%',
@@ -184,12 +195,12 @@ const styles = StyleSheet.create({
   picker: {
     width: "100%",
     height: "100%",
-    color: "#383838", // Standardfarbe für reguläre Items
+    color: "#383838",
   },
   pickerPlaceholder: {
     width: "100%",
     height: "100%",
-    color: "#949494", // Farbe für den Placeholder
+    color: "#949494", 
   },
 });
 
