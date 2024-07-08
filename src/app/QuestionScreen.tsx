@@ -74,14 +74,14 @@ const QuestionScreen = () => {
 
   const handleReadyPress = () => {
     const isCorrect = selectedAnswer === questions[currentQuestionIndex].correctAnswer;
-    if (selectedAnswer && mode === 'Normal') {
+    if (selectedAnswer && (mode === 'Normal'|| mode === 'Custom' && isTimerEnabled === 'false')) {
       if (isCorrect) {
         setScore(score + 1);
       }
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedAnswer(null);
       setCanContinue(false);
-    } else if (selectedAnswer && (mode === 'Survival' || mode === 'Custom')) {
+    } else if (selectedAnswer && (mode === 'Survival' || mode === 'Custom' && isTimerEnabled === 'true')) {
       if (isCorrect) {
         setScore(score + 1);
         setProgressKey(prevKey=>prevKey+1); // Reset progress key to restart CircularProgress

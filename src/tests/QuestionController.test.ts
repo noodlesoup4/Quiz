@@ -40,6 +40,14 @@ describe('QuestionController', () => {
       expect(questions).toEqual([]);
       expect(_.shuffle).toHaveBeenCalledWith([]);
     });
+
+    test('should handle categories with no questions gracefully', () => {
+      const categories = ['chemie', 'emptyCategory'];
+      const questions = QuestionController['readQuestions'](categories);
+      
+      expect(questions).toEqual(chemistryQuestions);
+      expect(_.shuffle).toHaveBeenCalledWith(chemistryQuestions);
+    });
   });
 
   describe('getQuestions', () => {
@@ -59,6 +67,31 @@ describe('QuestionController', () => {
       
       expect(questions).toEqual(chemistryQuestions);
     });
+
+    test('should return an empty array if no categories are provided', () => {
+      const categories: string[] = [];
+      const amount = 10;
+      const questions = QuestionController.getQuestions(categories, amount);
+      
+      expect(questions).toEqual([]);
+    });
+
+    test('should handle case where amount is zero', () => {
+      const categories = ['chemie', 'geographie'];
+      const amount = 0;
+      const questions = QuestionController.getQuestions(categories, amount);
+      
+      expect(questions).toEqual([]);
+    });
+
+    test('should handle case where categories include nonexistent ones', () => {
+      const categories = ['chemie', 'nonexistent'];
+      const amount = 3;
+      const questions = QuestionController.getQuestions(categories, amount);
+      
+      expect(questions.length).toBe(amount);
+      expect(questions).toEqual([...chemistryQuestions].slice(0, amount));
+    });
   });
 
   describe('endQuiz', () => {
@@ -73,6 +106,45 @@ describe('QuestionController', () => {
         pathname: 'EvaluationScreen',
         params: { score, total, mode },
       });
+    });
+
+    test('should handle edge case where score is negative', () => {
+      const score = -5;
+      const total = 20;
+      const mode = 'Normal';
+      
+      QuestionController.endQuiz(score, total, mode);
+      
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: 'EvaluationScreen',
+        params: { score, total, mode },
+      });
+    });
+
+    test('should handle edge case where total is zero', () => {
+      const score = 10;
+      const total = 0;
+      const mode = 'Normal';
+      
+      QuestionController.endQuiz(score, total, mode);
+      
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: 'EvaluationScreen',
+        params: { score, total, mode },
+      });
+    });
+
+    test('should handle edge case where mode is an invalid string', () => {
+      const score = 10;
+      const total = 20;
+      const mode = 'invalid';
+  
+      console.error = jest.fn();
+  
+      QuestionController.endQuiz(score, total, mode);
+  
+      expect(router.push).not.toHaveBeenCalled();
+      expect(console.error).toHaveBeenCalledWith('Error, no game mode recognized.');
     });
   });
 });

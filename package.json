@@ -12,7 +12,8 @@
     "lint": "expo lint"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "setupFilesAfterEnv": ["@testing-library/jest-native/extend-expect"]
   },
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.3",
@@ -51,6 +52,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/jest-native": "^5.4.3",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/react-native": "^12.5.1",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.6",
     "@types/react": "~18.2.45",

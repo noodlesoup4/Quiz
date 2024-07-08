@@ -60,7 +60,11 @@ class QuestionController{
      * @param mode The current mode (Normal, Survival, Custom)
      */
     public endQuiz(score: number, total: number, mode: string): void {
-        router.push({ pathname: 'EvaluationScreen', params: { score, total, mode } });
+        if (mode ==='Normal' || mode === 'Survival' || mode === 'Custom') {
+            router.push({ pathname: 'EvaluationScreen', params: { score, total, mode } });
+        } else {
+            console.error('Error, no game mode recognized.');
+        }
     }
 
 
