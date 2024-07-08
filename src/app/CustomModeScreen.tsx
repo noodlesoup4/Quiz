@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Alert, Switch } from 'react-native';
-import { useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Picker } from '@react-native-picker/picker';
 
 
@@ -10,6 +10,7 @@ const CustomModeScreen = () => {
   const [questionCount, setQuestionCount] = useState<number | null>(0);
   const [timer, setTimer] = useState<number | null>(null);
   const [isTimerEnabled, setIsTimerEnabled] = useState<boolean>(false);
+  const {mode} = useLocalSearchParams();
   const router = useRouter();
 
   const handleNext = () => {
@@ -21,11 +22,13 @@ const CustomModeScreen = () => {
     router.push({
       pathname: '/CategorySelectionScreen',
       params: {
+        mode : mode,
         questionCount: questionCount,
         timer: timer,
-        timerSet: isTimerEnabled.toString()
+        isTimerEnabled: isTimerEnabled.toString()
       }
     });
+    console.log(isTimerEnabled);
   };
 
   const generateOptions = (min: number, max: number, step: number) => {
@@ -70,6 +73,7 @@ const CustomModeScreen = () => {
       
       <View style={styles.inputContainer}>
         <Text style={[styles.text, styles.h2]}>Timer</Text>
+        <Text>Timer aktiviert survival mode!</Text>
         <Switch
           value={isTimerEnabled}
           onValueChange={(value) => {
@@ -128,7 +132,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "#383838",
-    fontFamily: 'Lato-Regular',
   },
   header: {
     backgroundColor: "#135D66",
@@ -140,22 +143,18 @@ const styles = StyleSheet.create({
   headerText: {
     fontSize: 28,
     color: "white",
-    fontFamily: 'Lato-Bold',
   },
   h1: {
     fontSize: 22,
     margin: -15,
-    fontFamily: 'Lato-Regular',
   },
   h2: {
     fontSize: 18,
-    fontFamily: 'Lato-Regular',
   },
   h3: {
     fontSize: 14,
     margin: 5,
     color: "#949494",
-    fontFamily: 'Lato-Regular',
   },
   completedButton: {
     width: "90%",
@@ -168,7 +167,6 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     color: "white",
-    fontFamily: 'Lato-Bold',
   },
   inputContainer: {
     alignItems: "center",
@@ -186,13 +184,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "100%",
     color: "#383838", // Standardfarbe für reguläre Items
-    fontFamily: 'Lato-Regular',
   },
   pickerPlaceholder: {
     width: "100%",
     height: "100%",
     color: "#949494", // Farbe für den Placeholder
-    fontFamily: 'Lato-Regular',
   },
 });
 

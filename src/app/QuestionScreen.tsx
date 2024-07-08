@@ -15,11 +15,17 @@ const QuestionScreen = () => {
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
-  const { selectedCategories, mode, questionCount, timer,timerSet } = useLocalSearchParams();
+  const { selectedCategories, mode, questionCount, timer, isTimerEnabled } = useLocalSearchParams();
   const [canContinue, setCanContinue] = useState(false);
   const [loading, setLoading] = useState(true);
   const [progressKey, setProgressKey] = useState(0); //state to manage progress key
-  const decrementOneSec = timer ? parseInt(timer[0]) * 1000 : 15000; // Dynamically decreases by one second depending which time has benn selected
+  
+  
+  const decrementOneSec = timer ? (Array.isArray(timer) ? parseInt(timer[0]) * 1000 : parseInt(timer) * 1000) : 15000;
+
+ 
+
+  console.log('Initial timerSet:', isTimerEnabled); // 1. Initial value at the beginning of the component
 
 
   const [fontsLoaded] = useFonts({
@@ -34,17 +40,19 @@ const QuestionScreen = () => {
   useEffect(() => {
     const fetchQuestions = () => {
       try {
-        
+        //console.log('timerSet in useEffect:', timerSet); // 2. Value inside useEffect
+
         const categoriesArray = JSON.parse(selectedCategories as string) as string[];
-        let questionData: Question[] = QuestionController.getQuestions(categoriesArray, 15);
+        let questionData: Question[] = [];
         if(mode === 'Custom'){
-          console.log("custom mode");
+          console.log('In custom');
           const parsedQuestionCount = Array.isArray(questionCount)
               ? parseInt(questionCount[0])
               : parseInt(questionCount as string);
-              
-            questionData = QuestionController.getQuestions(categoriesArray,parsedQuestionCount);
-            
+          questionData = QuestionController.getQuestions(categoriesArray, parsedQuestionCount);
+        } 
+        else {
+          questionData = QuestionController.getQuestions(categoriesArray,15);
         }
         setQuestions(questionData);
         setLoading(false);
@@ -108,8 +116,8 @@ const QuestionScreen = () => {
               : parseInt(timer as string);
 
   const renderTimer = () => {
-    const initialValue = mode === 'Custom' && timerSet === 'true' ? parsedTimer : 15;
-    const maxValue = mode === 'Custom' && timerSet === 'true' ? parsedTimer : 15;
+    const initialValue = mode === 'Custom' && isTimerEnabled === 'true' ? parsedTimer : 15;
+    const maxValue = mode === 'Custom' && isTimerEnabled === 'true' ? parsedTimer : 15;
 
  
     return (
@@ -136,7 +144,7 @@ const QuestionScreen = () => {
       {mode !== 'Survival' && hasMoreQuestions && (
         <Text style={styles.text}>{currentQuestionIndex + 1}/{questions.length}</Text>
       )}
-      {(mode === 'Survival' || (mode === 'Custom' && timerSet === 'true')) && hasMoreQuestions && (
+      {(mode === 'Survival' || (mode === 'Custom' && isTimerEnabled === 'true')) && hasMoreQuestions && (
         <View style={styles.timer}>
           {renderTimer()}
         </View>

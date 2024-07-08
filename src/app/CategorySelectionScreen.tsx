@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { FontAwesome5, FontAwesome, MaterialIcons, FontAwesome6 } from '@expo/vector-icons';
+import { FontAwesome5, FontAwesome, FontAwesome6 } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import {  midnightTeal, paleMist, white } from '../model/Colors'; 
+import { midnightTeal, paleMist, white } from '../model/Colors';
 
 const categories = [
   { name: 'Chemie', icon: <FontAwesome5 name="flask" size={24} color="teal" /> },
   { name: 'Physik', icon: <FontAwesome name="calculator" size={24} color="teal" /> },
-  { name: 'Politik', icon: <FontAwesome name="university" size={24} color="teal" />},
+  { name: 'Politik', icon: <FontAwesome name="university" size={24} color="teal" /> },
   { name: 'Geschichte', icon: <FontAwesome name="book" size={24} color="teal" /> },
   { name: 'Geographie', icon: <FontAwesome5 name="globe" size={24} color="teal" /> },
   { name: 'Natur', icon: <FontAwesome5 name="paw" size={24} color="teal" /> },
@@ -17,15 +17,26 @@ const categories = [
 ];
 
 export default function CategorySelectionScreen() {
-  const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]); // Array to store selected indices
-  const [canContinue, setCanContinue] = useState(false); // State for continue button
+  const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
+  const [canContinue, setCanContinue] = useState(false);
   const [randomSelected, setRandomSelected] = useState(false);
   const router = useRouter();
-  const {mode, questionCount, timer, timerSet} = useLocalSearchParams();
+  const params = useLocalSearchParams();
 
+  const mode: string = params.mode as string;
+  const questionCount: string = params.questionCount as string;
+  const timer: string = params.timer as string;
+  const isTimerEnabled: string = params.isTimerEnabled as string;
+
+  useEffect(() => {
+    console.log("Mode:", mode);
+    console.log("Question Count:", questionCount);
+    console.log("Timer:", timer);
+    console.log("Is Timer Enabled:", isTimerEnabled);
+  }, [mode, questionCount, timer, isTimerEnabled]);
 
   const handlePress = (index: number) => {
-    if (index === 7) { // "Zufällig" is at index 7
+    if (index === 7) {
       if (randomSelected) {
         setRandomSelected(false);
         setSelectedIndexes([]);
@@ -36,7 +47,7 @@ export default function CategorySelectionScreen() {
         setCanContinue(true);
       }
     } else {
-      if (randomSelected) return; // Disable other buttons if "Zufällig" is selected
+      if (randomSelected) return;
       const newSelectedIndexes = [...selectedIndexes];
       if (selectedIndexes.includes(index)) {
         const removedIndex = newSelectedIndexes.indexOf(index);
@@ -45,7 +56,7 @@ export default function CategorySelectionScreen() {
         newSelectedIndexes.push(index);
       }
       setSelectedIndexes(newSelectedIndexes);
-      setCanContinue(newSelectedIndexes.length > 0); // Update continue button state
+      setCanContinue(newSelectedIndexes.length > 0);
     }
   };
 
@@ -65,7 +76,7 @@ export default function CategorySelectionScreen() {
             style={[
               styles.button,
               selectedIndexes.includes(index) && styles.selectedButton,
-              randomSelected && index !== 7 && {opacity: 0.4} // Set opacity for other buttons if "Zufällig" is selected
+              randomSelected && index !== 7 && { opacity: 0.4 },
             ]}
             onPress={() => handlePress(index)}
           >
@@ -76,22 +87,28 @@ export default function CategorySelectionScreen() {
       </View>
 
       <TouchableOpacity
-        style={[styles.continueButton, { opacity: canContinue ? 1 : 0.40 }]}
-        disabled={!canContinue} // Disable button if no category selected
+        style={[styles.continueButton, { opacity: canContinue ? 1 : 0.4 }]}
+        disabled={!canContinue}
         onPress={() => {
-          let selectedCategories = selectedIndexes.map(index => categories[index].name.toLowerCase()); 
-            if (randomSelected) {
-              // Include all categories except "Zufällig"
-                selectedCategories = categories
-                .filter((_, index) => index !== 7)
-                .map(category => category.name.toLowerCase());
-            }
-            router.push({
-              pathname: 'QuestionScreen',
-              params : {selectedCategories : JSON.stringify(selectedCategories),mode, questionCount, timer,timerSet}
-            })
-          } 
-        }
+          let selectedCategories = selectedIndexes.map(index => categories[index].name.toLowerCase());
+          if (randomSelected) {
+            selectedCategories = categories
+              .filter((_, index) => index !== 7)
+              .map(category => category.name.toLowerCase());
+          }
+          router.push({
+            pathname: 'QuestionScreen',
+            params: {
+              selectedCategories: JSON.stringify(selectedCategories),
+              mode: mode,
+              questionCount: questionCount,
+              timer: timer,
+              isTimerEnabled: isTimerEnabled,
+            },
+          });
+          console.log(typeof isTimerEnabled);
+          console.log(mode, typeof mode);
+        }}
       >
         <Text style={styles.continueButtonText}>Weiter</Text>
       </TouchableOpacity>
@@ -111,7 +128,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     position: 'absolute',
-    top: '8%', 
+    top: '8%',
   },
   grid: {
     top: '5%',
@@ -119,7 +136,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: 100, // Adjust this value as needed to move the grid lower
+    marginTop: 100,
   },
   button: {
     width: '40%',
@@ -139,7 +156,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   continueButton: {
-    marginTop:50,
+    marginTop: 50,
     width: '80%',
     backgroundColor: '#135D66',
     marginVertical: 10,
