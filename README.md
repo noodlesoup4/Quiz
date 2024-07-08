@@ -14,7 +14,7 @@
 
  Alternativ:
 6. Öffne Android Studio
-   -In Projects zu More Actions navigieren und dort Virtual Device Manager auswählen.
+   - In Projects zu More Actions navigieren und dort Virtual Device Manager auswählen.
    - Falls kein Device vorhanden, dann oben links auf das + Symbol klicken, um ein Device hinzuzufügen.
    - Wählen Sie das Gerät "Pixel 8 API 33" aus. Falls nicht vorhanden, dann stehen Ihnen auch andere Geräte zur Verfügung.
    - Gerät sollte im Device Manager zu sehen sein; rechts unter den drei Punkten Symbol klicken und dort "Cold Boot" auswählen
