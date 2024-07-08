@@ -12,8 +12,8 @@
 5. Starte die App mit folgendem Befehl: npx expo start
 6. Expo Go App öffnen und QR Code (befindet sich im Terminal) einscannen
 
-Alternativ:
-6. Öffne Android Studio 
+ Alternativ:
+6. Öffne Android Studio
 
    -In Projects zu More Actions navigieren und dort Virtual Device Manager auswählen.
    - Falls kein Device vorhanden, dann oben links auf das + Symbol klicken, um ein Device hinzuzufügen.
