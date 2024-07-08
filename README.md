@@ -1,50 +1,22 @@
-# Welcome to your Expo app 👋
+## Software aufsetzen
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+1. Sie brauchen folgende Tools: 
+   - Node.js [Node](https://nodejs.org/en)
+   - Visual Studio Code [VS Code](https://code.visualstudio.com/)
+   - expo GO [Expo](https://expo.dev/go)
+   - Optional: Android Studio [Android Studio](https://developer.android.com/studio) 
+2. Repostiory klonen
+3. Repository in VS Code öffnen
+4. Folgenden Befehl im Terminal ausführen: npm install (Stelle sicher, dass der Befehl im root des Projektes ausgeführt wird)
+   - Installiert die benötigten Abhängigkeiten zum Projekt
+5. Starte die App mit folgendem Befehl: npx expo start
+6. Expo Go App öffnen und QR Code (befindet sich im Terminal) einscannen
 
-## Get started
+ Alternativ:
+6. Öffne Android Studio
+   - In Projects zu More Actions navigieren und dort Virtual Device Manager auswählen.
+   - Falls kein Device vorhanden, dann oben links auf das + Symbol klicken, um ein Device hinzuzufügen.
+   - Wählen Sie das Gerät "Pixel 8 API 33" aus. Falls nicht vorhanden, dann stehen Ihnen auch andere Geräte zur Verfügung.
+   - Gerät sollte im Device Manager zu sehen sein; rechts unter den drei Punkten Symbol klicken und dort "Cold Boot" auswählen
+7. Im Terminal a eingeben, um die App zu starten
 
-1. Install dependencies
-
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-    npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
