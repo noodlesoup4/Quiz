@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import { useFonts } from 'expo-font';
 import { router, useLocalSearchParams } from 'expo-router';
@@ -7,10 +7,11 @@ import QuestionComponent from '../components/questionScreen/QuestionComponent';
 import AnswerButton from '../components/questionScreen/AnswerButton';
 import ReadyButton from '../components/questionScreen/ReadyButton';
 import Question from '../model/Question';
-import CircularProgress from 'react-native-circular-progress-indicator';
+import CircularProgress, { ProgressRef } from 'react-native-circular-progress-indicator';
 
 
 const QuestionScreen = () => {
+  const progressRef = useRef<ProgressRef>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
@@ -70,6 +71,9 @@ const QuestionScreen = () => {
   const handleAnswerPress = (answer: string) => {
     setSelectedAnswer(answer);
     setCanContinue(true);
+    if (progressRef.current) {
+      progressRef.current.pause();
+    }
   };
 
   const handleReadyPress = () => {
@@ -122,6 +126,7 @@ const QuestionScreen = () => {
  
     return (
       <CircularProgress
+      ref={progressRef}
         key={progressKey}
         value={0}
         initialValue={initialValue}
