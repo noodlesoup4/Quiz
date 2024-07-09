@@ -20,3 +20,4 @@
    - Gerät sollte im Device Manager zu sehen sein; rechts unter den drei Punkten Symbol klicken und dort "Cold Boot" auswählen
 7. Im Terminal a eingeben, um die App zu starten
 
+Wichtige Randnotiz: Henry Fernandez war am Projektcode beteiligt. (Pair Programming)
